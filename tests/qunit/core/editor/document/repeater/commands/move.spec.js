@@ -43,6 +43,34 @@ export const Move = () => {
 				assert.equal( eTabs.settings.get( 'tabs' ).at( targetIndex ).id,
 					eTabModel.id, 'Item restored to targetIndex' );
 			} );
+
+			QUnit.test( 'History: at document', ( assert ) => {
+				const eDocument = elementor.getPreviewContainer(),
+					sourceIndex = 0,
+					targetIndex = 1,
+					eTabModel = eDocument.settings.get( 'snippets_list' ).at( sourceIndex );
+
+				RepeaterHelper.move( eDocument, 'snippets_list', sourceIndex, targetIndex );
+
+				const historyItem = HistoryHelper.getFirstItem().attributes;
+
+				// Exist in history.
+				HistoryHelper.inHistoryValidate( assert, historyItem, 'move', 'Post' );
+
+				// Undo.
+				HistoryHelper.undoValidate( assert, historyItem );
+
+				// Check item moved to sourceIndex
+				assert.equal( eDocument.settings.get( 'snippets_list' ).at( sourceIndex ).get( '_id' ),
+					eTabModel.get( '_id' ), 'Item back to sourceIndex' );
+
+				// Redo.
+				HistoryHelper.redoValidate( assert, historyItem );
+
+				// Check item moved to targetIndex
+				assert.equal( eDocument.settings.get( 'snippets_list' ).at( targetIndex ).get( '_id' ),
+					eTabModel.get( '_id' ), 'Item restored to targetIndex' );
+			} );
 		} );
 
 		QUnit.module( 'Multiple Selection', () => {

@@ -41,6 +41,32 @@ export const Remove = () => {
 				assert.equal( eTabs.settings.get( 'tabs' ).length, ( originalItemsCount - 1 ),
 					'Item was removed from the model' );
 			} );
+
+			QUnit.test( 'History: at document', ( assert ) => {
+				const eDocument = elementor.getPreviewContainer(),
+					originalItemsCount = eDocument.settings.get( 'snippets_list' ).length;
+
+				RepeaterHelper.remove( eDocument, 'snippets_list', 1 );
+
+				const historyItem = HistoryHelper.getFirstItem().attributes;
+
+				// Exist in history.
+				HistoryHelper.inHistoryValidate( assert, historyItem, 'remove', 'Post' );
+
+				// Undo.
+				HistoryHelper.undoValidate( assert, historyItem );
+
+				// Check item restored.
+				assert.equal( eDocument.settings.get( 'snippets_list' ).length, originalItemsCount,
+					'Item were restored to the model' );
+
+				// Redo.
+				HistoryHelper.redoValidate( assert, historyItem );
+
+				// Check item was removed.
+				assert.equal( eDocument.settings.get( 'snippets_list' ).length, ( originalItemsCount - 1 ),
+					'Item was removed from the model' );
+			} );
 		} );
 
 		QUnit.module( 'Multiple Selection', () => {

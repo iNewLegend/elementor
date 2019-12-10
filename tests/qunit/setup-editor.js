@@ -39,6 +39,57 @@ const elementorConfigSettings = {
 				left: '',
 				isLinked: true,
 			},
+			snippets_list: {
+				type: 'repeater',
+				tab: 'settings',
+				section: 'document_snippets',
+				fields: {
+					script_title: {
+						type: 'text',
+						tab: 'content',
+						label: 'Title',
+						default: 'List Item',
+						name: 'script_title',
+					},
+					snippet_location: {
+						type: 'select2',
+						tab: 'content',
+						label: 'Snippet location',
+						multiple: false,
+						label_block: 'true',
+						default: 'header',
+						options: {
+							header: 'Header',
+							'before-body': 'Before body',
+							'after-body': 'After body',
+						},
+						name: 'snippet_location',
+					},
+					snippet_html: {
+						type: 'code',
+						tab: 'content',
+						label: 'Snippet',
+						default: '',
+						placeholder: 'Enter your code',
+						show_label: false,
+						name: 'snippet_html',
+					},
+				},
+				default: [
+					{
+						_id: '632452bf',
+						script_title: 'Snippet #1',
+						snippet_location: 'header',
+					},
+					{
+						_id: '222452bf',
+						script_title: 'Snippet #2',
+						snippet_location: 'header',
+					},
+				],
+				title_field: '{{{script_title}}}',
+				name: 'snippets_list',
+			},
 		},
 	},
 	general: {

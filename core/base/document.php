@@ -7,6 +7,7 @@ use Elementor\Plugin;
 use Elementor\DB;
 use Elementor\Controls_Manager;
 use Elementor\Controls_Stack;
+use Elementor\Repeater;
 use Elementor\User;
 use Elementor\Core\Settings\Manager as SettingsManager;
 use Elementor\Utils;
@@ -479,6 +480,70 @@ abstract class Document extends Controls_Stack {
 				]
 			);
 		}
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'document_snippets',
+			[
+				'label' => __( 'Snippets Sequence', 'elementor' ),
+				'tab' => Controls_Manager::TAB_SETTINGS,
+			]
+		);
+
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'script_title',
+			[
+				'label' => __( 'Title', 'elementor' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'List Item', 'elementor' ),
+			]
+		);
+
+		$repeater->add_control(
+			'snippet_location',
+			[
+				'label' => __( 'Snippet location', 'elementor' ),
+				'type' => Controls_Manager::SELECT2,
+				'multiple' => false,
+				'label_block' => 'true',
+				'default' => 'header',
+				'options' => [
+					'header' => __( 'Header', 'elementor' ),
+					'before-body' => __( 'Before body', 'elementor' ),
+					'after-body' => __( 'After body', 'elementor' ),
+				],
+			]
+		);
+
+		$repeater->add_control(
+			'snippet_html',
+			[
+				'label' => __( 'Snippet', 'elementor' ),
+				'type' => Controls_Manager::CODE,
+				'default' => '',
+				'placeholder' => __( 'Enter your code', 'elementor' ),
+				'show_label' => false,
+			]
+		);
+
+		$this->add_control(
+			'snippets_list',
+			[
+				'type' => Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'_id' => Utils::generate_random_string(),
+						'script_title' => __( 'Snippet #1', 'elementor' ),
+						'snippet_location' => 'header',
+					],
+				],
+				'title_field' => '{{{ script_title }}}',
+			]
+		);
 
 		$this->end_controls_section();
 

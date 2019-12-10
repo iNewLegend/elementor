@@ -48,6 +48,34 @@ export const Insert = () => {
 			} );
 		} );
 
+		QUnit.test( 'History: at document', ( assert ) => {
+			const eDocument = elementor.getPreviewContainer(),
+				originalItemsCount = eDocument.settings.get( 'snippets_list' ).length;
+
+			RepeaterHelper.insert( eDocument, 'snippets_list', {
+				script_title: 'Test Title',
+				snippet_html: 'Test Content',
+			} );
+
+			const historyItem = HistoryHelper.getFirstItem().attributes;
+
+			// Exist in history.
+			HistoryHelper.inHistoryValidate( assert, historyItem, 'add', 'Post' );
+
+			// Undo.
+			HistoryHelper.undoValidate( assert, historyItem );
+
+			assert.equal( eDocument.settings.get( 'snippets_list' ).length, originalItemsCount,
+				'Item was removed from the model' );
+
+			// Redo.
+			HistoryHelper.redoValidate( assert, historyItem );
+
+			// Check item restored.
+			assert.equal( eDocument.settings.get( 'snippets_list' ).length, ( originalItemsCount + 1 ),
+				'Item were restored to the model' );
+		} );
+
 		QUnit.module( 'Multiple Selection', () => {
 			QUnit.test( 'Simple', ( assert ) => {
 				const eColumn = ElementsHelper.createSection( 1, true ),

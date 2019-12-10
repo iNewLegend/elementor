@@ -59,6 +59,42 @@ export const Settings = () => {
 					done();
 				} );
 			} );
+
+			// TODO: Complete the test.
+			// QUnit.test( 'History: at document', ( assert ) => {
+			// 	const eDocument = elementor.getPreviewContainer(),
+			// 		scriptTitle = 'This is was changed',
+			// 		index = 0,
+			// 		eItem = eDocument.settings.get( 'snippets_list' ).at( index ),
+			// 		originalTitle = eItem.get( 'script_title' );
+			//
+			// 	RepeaterHelper.settings( eDocument, 'snippets_list', index, {
+			// 		script_title: scriptTitle,
+			// 	} );
+			//
+			// 	const done = assert.async(); // Pause the test till done.
+			//
+			// 	setTimeout( () => {
+			// 		const historyItem = HistoryHelper.getFirstItem().attributes;
+			//
+			// 		// Exist in history.
+			// 		HistoryHelper.inHistoryValidate( assert, historyItem, 'change', `Post Item#${ index + 1 }` );
+			//
+			// 		// Undo.
+			// 		HistoryHelper.undoValidate( assert, historyItem );
+			//
+			// 		// Settings back to default.
+			// 		assert.equal( eItem.get( 'script_title' ), originalTitle, 'Settings back to default' );
+			//
+			// 		// Redo.
+			// 		HistoryHelper.redoValidate( assert, historyItem );
+			//
+			// 		// Settings restored.
+			// 		assert.equal( eItem.get( 'script_title' ), scriptTitle, 'Settings restored' );
+			//
+			// 		done();
+			// 	} );
+			// } );
 		} );
 
 		QUnit.module( 'Multiple Selection', () => {
