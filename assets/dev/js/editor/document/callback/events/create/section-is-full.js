@@ -1,6 +1,6 @@
-import HookAfter from '../base/after';
+import EventAfter from 'elementor-api/modules/event-base/after';
 
-export class CreateSectionIsFull extends HookAfter {
+export class CreateSectionIsFull extends EventAfter {
 	getCommand() {
 		return 'document/elements/create';
 	}
@@ -22,7 +22,7 @@ export class CreateSectionIsFull extends HookAfter {
 
 		containers.forEach( ( /* Container */ container ) => {
 			if ( 'section' === container.model.get( 'elType' ) ) {
-				container.view._checkIsFull();
+				container.view.toggleSectionIsFull();
 			}
 		} );
 	}

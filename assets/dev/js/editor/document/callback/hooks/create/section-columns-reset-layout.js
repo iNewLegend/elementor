@@ -1,4 +1,4 @@
-import HookAfter from '../base/after';
+import HookAfter from 'elementor-api/modules/hook-base/after';
 
 export class SectionColumnsResetLayout extends HookAfter {
 	getCommand() {
@@ -14,8 +14,8 @@ export class SectionColumnsResetLayout extends HookAfter {
 	}
 
 	getConditions( args ) {
-		// On `document/elements/move` no need for reset layout.
-		return 'document/elements/move' !== $e.commands.currentTrace[ 0 ];
+		// On `document/elements/move` do not fire the hook!.
+		return 'document/elements/move' !== $e.commands.getCurrentFirstTrace();
 	}
 
 	/**

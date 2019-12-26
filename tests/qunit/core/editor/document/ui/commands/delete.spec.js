@@ -1,5 +1,5 @@
 import ElementsHelper from '../../elements/helper';
-import CommonHelper from '../../../../common/components/helper';
+import CommonHelper from '../../../../common/helper';
 
 export const Delete = () => {
 	QUnit.test( 'Delete', ( assert ) => {

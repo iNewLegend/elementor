@@ -1,6 +1,6 @@
-import HookAfter from '../base/after';
+import EventAfter from 'elementor-api/modules/event-base/after';
 
-export class DeleteSectionIsFull extends HookAfter {
+export class DeleteSectionIsFull extends EventAfter {
 	getCommand() {
 		return 'document/elements/delete';
 	}
@@ -22,7 +22,7 @@ export class DeleteSectionIsFull extends HookAfter {
 
 		containers.forEach( ( /* Container */ container ) => {
 			if ( 'column' === container.model.get( 'elType' ) ) {
-				container.parent.view._checkIsFull();
+				container.parent.view.toggleSectionIsFull();
 			}
 		} );
 	}

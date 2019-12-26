@@ -1,6 +1,6 @@
 import ElementEmpty from './element-empty';
 import RootEmpty from './root-empty';
-import DocumentUtils from 'elementor-document/utils/helpers';
+import DocumentUtils from 'elementor-api/utils/document';
 
 export default class extends Marionette.CompositeView {
 	getTemplate() {
@@ -267,7 +267,7 @@ export default class extends Marionette.CompositeView {
 			this.ui.indicators.append( $indicator );
 
 			// Added delay of 500ms because the indicators bar has a CSS transition attribute of .5s
-			$indicator.tipsy( { delayIn: 300 } );
+			$indicator.tipsy( { delayIn: 300, gravity: 's' } );
 		} );
 	}
 
