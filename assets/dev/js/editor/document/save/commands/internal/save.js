@@ -5,7 +5,7 @@ export class Save extends CommandInternalBase {
 		const { status = 'draft', force = false, onSuccess = null, document = elementor.documents.getCurrent() } = args;
 
 		if ( ! force && document.editor.isSaving ) {
-			return;
+			return jQuery.Deferred().reject( 'Document already in save progress' );
 		}
 
 		const container = document.container,
@@ -34,7 +34,8 @@ export class Save extends CommandInternalBase {
 				settings: settings,
 			},
 			error: ( data ) => this.onSaveError( data, status, document ),
-		} ).then( ( data ) => this.onSaveSuccess( data, status, oldStatus, elements, document, onSuccess ) );
+		} )
+		.then( ( data ) => this.onSaveSuccess( data, status, oldStatus, elements, document, onSuccess ) );
 
 		// TODO: Remove - Backwards compatibility
 		elementor.saver.trigger( 'save', args );

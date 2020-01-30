@@ -182,12 +182,12 @@ export default class Hooks {
 	 *
 	 * @param {string} command
 	 * @param {{}} args
-	 * @param {*} e
+	 * @param {*} error
 	 *
 	 * @returns {boolean}
 	 */
-	runDataCatch( command, args, e ) {
-		return this.run( 'data', 'catch', command, args, e );
+	runDataCatch( command, args, error ) {
+		return this.run( 'data', 'catch', command, args, error );
 	}
 
 	/**
@@ -231,7 +231,7 @@ export default class Hooks {
 	 * @returns {boolean}
 	 */
 	runUICatch( command, args, e ) {
-		return this.run( 'ui', 'catch', command, args );
+		return this.run( 'ui', 'catch', command, args, e );
 	}
 
 	/**

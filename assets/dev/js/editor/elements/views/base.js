@@ -425,7 +425,7 @@ BaseElementView = BaseContainer.extend( {
 
 	initControlsCSSParser() {
 		this.controlsCSSParser = new ControlsCSSParser( {
-			id: this.model.cid,
+			id: this.model.get( 'id' ),
 			settingsModel: this.getEditModel().get( 'settings' ),
 			dynamicParsing: this.getDynamicParsingSettings(),
 		} );
@@ -469,7 +469,7 @@ BaseElementView = BaseContainer.extend( {
 			settings.attributes,
 			this.getEditModel().get( 'settings' ).controls,
 			[ /{{ID}}/g, /{{WRAPPER}}/g ],
-			[ this.getID(), '.elementor-' + elementor.config.document.id + ' .' + this.getElementUniqueID() ] );
+			[ this.getID(), '.elementor-' + elementor.config.document.id + ' .elementor-element.' + this.getElementUniqueID() ] );
 
 		this.controlsCSSParser.addStyleToDocument();
 

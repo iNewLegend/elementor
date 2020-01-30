@@ -2,14 +2,15 @@ import ComponentBase from 'elementor-api/modules/component-base';
 import BackwardsCompatibility from './backwards-compatibility.js';
 import CommandHistoryBase from './commands/base/history';
 import CommandHistoryDebounceBase from './commands/base/history/debounce';
-import * as hooksData from './hooks/data/';
-import * as hooksUI from './hooks/ui/';
+import * as hooks from './hooks/';
 
 export default class Component extends ComponentBase {
-	modules = {
-		CommandHistoryBase,
-		CommandHistoryDebounceBase,
-	};
+	static getModules() {
+		return {
+			CommandHistoryBase,
+			CommandHistoryDebounceBase,
+		};
+	}
 
 	getNamespace() {
 		return 'document';
@@ -28,10 +29,7 @@ export default class Component extends ComponentBase {
 	}
 
 	defaultHooks() {
-		return {
-			... hooksData,
-			... hooksUI,
-		};
+		return this.importHooks( hooks );
 	}
 
 	defaultUtils() {
