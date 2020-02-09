@@ -26,14 +26,14 @@ historyTypes = {
 | [Add-Transaction](#command----erundocumenthistroyadd-transaction)      | `$e.run('document/history/add-transaction')`       | 
 | [Clear-Transaction](#command----erundocumenthistroyclear-transaction)  | `$e.run('document/history/clear-transaction')`     | 
 | [Delete-Log](#command----erundocumenthistroydelete-log)                | `$e.run('document/history/delete-log')`            | 
-| [End-Log](#)                                                           | `$e.run('document/history/end-log')`               | 
-| [End-Transaction](#)                                                   | `$e.run('document/history/end-transaction')`       | 
-| [Log-Sub-Item](#)                                                      | `$e.run('document/history/log-sub-item')`          | 
-| [Start-Log](#)                                                         | `$e.run('document/history/start-log')`             | 
-| [Do](#)                                                                | `$e.run('document/history/do')`                    | 
-| [Undo](#)                                                              | `$e.run('document/history/undo')`                  | 
-| [Undo-All](#)                                                          | `$e.run('document/history/undo-all')`              | 
-| [Redo](#)                                                              | `$e.run('document/history/redo')`                  | 
+| [End-Log](#command----erundocumenthistroyend-log)                      | `$e.run('document/history/end-log')`               | 
+| [End-Transaction](#command----erundocumenthistroyend-transaction)      | `$e.run('document/history/end-transaction')`       | 
+| [Log-Sub-Item](#command----erundocumenthistroylog-sub-item)            | `$e.run('document/history/log-sub-item')`          | 
+| [Start-Log](#command----erundocumenthistroystart-log)                  | `$e.run('document/history/start-log')`             | 
+| [Do](#command----erundocumenthistroydo)                                | `$e.run('document/history/do')`                    | 
+| [Undo](#command----erundocumenthistroyundo)                            | `$e.run('document/history/undo')`                  | 
+| [Undo-All](#command----erundocumenthistroyundo-all)                    | `$e.run('document/history/undo-all')`              | 
+| [Redo](#command----erundocumenthistroyredo)                            | `$e.run('document/history/redo')`                  | 
 
 ## _Command_ -- `$e.run('document/histroy/add-transaction')`
 *  **Name**: Add-Transaction.
@@ -48,7 +48,7 @@ historyTypes = {
     | _type_       | `{String}`            | **require**   | Type
     | _title_      | `{String}`            | **optional**  | Title.
     | _subTitle_   | `{String}`            | **optional**  | Sub title.
-    | _restore_    | `{function()}`         | **optional** | Restore function.
+    | _restore_    | `{function()}`        | **optional**  | Restore function.
 
 ## _Command_ -- `$e.run('document/histroy/clear-transaction')`
 *  **Name**: Delete-Transaction.
