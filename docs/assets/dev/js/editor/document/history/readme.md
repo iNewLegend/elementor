@@ -30,6 +30,7 @@ historyTypes = {
 | [End-Transaction](#)                                                   | `$e.run('document/history/end-transaction')`       | 
 | [Log-Sub-Item](#)                                                      | `$e.run('document/history/log-sub-item')`          | 
 | [Start-Log](#)                                                         | `$e.run('document/history/start-log')`             | 
+| [Do](#)                                                                | `$e.run('document/history/do')`                    | 
 | [Undo](#)                                                              | `$e.run('document/history/undo')`                  | 
 | [Undo-All](#)                                                          | `$e.run('document/history/undo-all')`              | 
 | [Redo](#)                                                              | `$e.run('document/history/redo')`                  | 
@@ -118,6 +119,16 @@ title, subTitle will be taken from the first transaction item.
     Result:
     
     ![history-empty](../../../../../../images/edocument-history/history-empty.png)
+
+## _Command_ -- `$e.run('document/histroy/do')`
+*  **Name**: Undo.
+*  **Description**: Do history step.
+*  **Returns**: `{void}`
+
+    | Property     | Type                  | Requirement    | Description |
+    |---           |---                    |---             |---|
+    | _index_         | `{Number}`         | **optional**   | Index of history item.
+
 
 ## _Command_ -- `$e.run('document/histroy/undo')`
 *  **Name**: Undo.
