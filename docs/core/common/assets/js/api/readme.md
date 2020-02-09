@@ -1,7 +1,7 @@
 # Elementor JS `$e`  API
 ## Introduction
 
-**Elementor JS API** - is set of *API(s)*, *modules*, and *utils*, used to communicating with *elementor*.
+**Elementor JS API** - is set of *API(s)*, *modules*, *components*, and *utils*, used to communicating with *elementor*.
  represented as `$e` - Global Variable.
 
 # Overview
