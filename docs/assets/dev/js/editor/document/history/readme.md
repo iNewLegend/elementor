@@ -28,107 +28,17 @@ historyTypes = {
 | [Undo-All](#command----erundocumenthistroyundo-all)                    | `$e.run('document/history/undo-all')`              | Undo all history items.
 | [Redo](#command----erundocumenthistroyredo)                            | `$e.run('document/history/redo')`                  | Redo history item.
 
+
 ## Component `document/history/` -- Internal Commands
-| Command                                                                | Access                                              | Description         
-|------------------------------------------------------------------------|-----------------------------------------------------|-----------------------------------------
-| [Add-Transaction](#command----erundocumenthistroyadd-transaction)      | `$e.internal('document/history/add-transaction')`   | Add transaction item.
-| [Clear-Transaction](#command----erundocumenthistroyclear-transaction)  | `$e.internal('document/history/clear-transaction')` | Clear transaction.
-| [Delete-Log](#command----erundocumenthistroydelete-log)                | `$e.internal('document/history/delete-log')`        | Delete log.
-| [End-Log](#command----erundocumenthistroyend-log)                      | `$e.internal('document/history/end-log')`           | End log.
-| [End-Transaction](#command----erundocumenthistroyend-transaction)      | `$e.internal('document/history/end-transaction')`   | End Transaction.
-| [Log-Sub-Item](#command----erundocumenthistroylog-sub-item)            | `$e.internal('document/history/log-sub-item')`      | Lob sub item.
-| [Start-Log](#command----erundocumenthistroystart-log)                  | `$e.internal('document/history/start-log')`         | Start log.
-
-## _Command_ -- `$e.run('document/histroy/add-transaction')`
-*  **Name**: Add-Transaction.
-*  **Description**: Add item to transactions.
-*  **Returns**: `{void}`
-*  **Arguments**: 
-
-    | Property     | Type                  | Requirement   | Description |
-    |---           |---                    |---            |---|
-    | _container_  | `{Container}`         | **require**   | Container log.
-    | _containers_ | `{Array.<Container>}` | **require**   | Containers log.
-    | _type_       | `{String}`            | **require**   | Type
-    | _title_      | `{String}`            | **optional**  | Title.
-    | _subTitle_   | `{String}`            | **optional**  | Sub title.
-    | _restore_    | `{function()}`        | **optional**  | Restore function.
-
-## _Command_ -- `$e.run('document/histroy/clear-transaction')`
-*  **Name**: Delete-Transaction.
-*  **Description**: Clear transactions list.
-*  **Returns**: `{void}`
-*  **Arguments**: None.
-
-## _Command_ -- `$e.run('document/histroy/delete-log')`
-*  **Name**: Delete-Log.
-*  **Description**: Delete logged history.
-*  **Returns**: `{void}`
-*  **Arguments**: 
-
-    | Property     | Type                  | Requirement   | Description |
-    |---           |---                    |---            |---|
-    | _id_         | `{Number}`            | **required**  | Id of logged history to delete.
-    
-## _Command_ -- `$e.run('document/histroy/end-log')`
-*  **Name**: End-Log.
-*  **Description**: End logged history.
-*  **Returns**: `{void}`
-*  **Arguments**: None.
-
-## _Command_ -- `$e.run('document/histroy/end-transaction')`
-*  **Name**: End-Transaction.
-*  **Description**: End transaction, will log the first and the last transaction, as new logged history.
-title, subTitle will be taken from the first transaction item.
-*  **Returns**: `{void}`
-*  **Arguments**: None.
-
-## _Command_ -- `$e.run('document/histroy/log-sub-item')`
-*  **Name**: Log-Sub-Item.
-*  **Description**: Log sub item, Each history item can have sub items ( non visual at history panel ).
-*  **Returns**: `{void}`
-*  **Arguments**: 
-
-    | Property     | Type                  | Requirement    | Description |
-    |---           |---                    |---             |---|
-    | _id_         | `{Number}`            | **optional**   | Id of history item, to be sub item of. default: `{elementor.documents.currentDocument.history.getCurrentId()}`.
-    | _container_  | `{Container}`         | **optional**   | Container log.
-    | _containers_ | `{Array.<Container>}` | **optional**   | Containers log.
-    | _type_       | `{String}`            | **optional**   | Type
-    | _title_      | `{String}`            | **optional**   | Title.
-    | _subTitle_   | `{String}`            | **optional**   | Sub title.
-    | _restore_    | `{function()}`        | **optional**   | Restore function.
-
-## _Command_ -- `$e.run('document/histroy/start-log')`
-*  **Name**: Start-Log.
-*  **Description**: Start log item.
-*  **Returns**: `{Number}` *log id*.
-*  **Arguments**: 
-
-    | Property     | Type                  | Requirement   | Description |
-    |---           |---                    |---            |---|
-    | _container_  | `{Container}`         | **require**   | Container log.
-    | _containers_ | `{Array.<Container>}` | **require**   | Containers log.
-    | _type_       | `{String}`            | **require**   | Type
-    | _title_      | `{String}`            | **require**   | Title.
-    | _subTitle_   | `{String}`            | **optional**  | Sub title.
-    | _restore_    | `{function()}`        | **optional**  | Restore function.
-*  **Examples**:
-    ```javascript
-    id = $e.run( 'document/history/start-log', { 
-      type: 'custom',
-      title: 'My custom title'
-    } );
-    ```
-    Result:
-    
-    ![history-with-custom-title](../../../../../../images/edocument-history/history-with-custom-title.png)
-    ```javascript
-    $e.run( 'document/history/delete-log', { id } ); 
-    ```
-    Result:
-    
-    ![history-empty](../../../../../../images/edocument-history/history-empty.png)
+| Command                                                                     | Access                                              | Description         
+|-----------------------------------------------------------------------------|-----------------------------------------------------|-----------------------------------------
+| [Add-Transaction](#command----einternaldocumenthistroyadd-transaction)      | `$e.internal('document/history/add-transaction')`   | Add transaction item.
+| [Clear-Transaction](#command----einternaldocumenthistroyclear-transaction)  | `$e.internal('document/history/clear-transaction')` | Clear transaction.
+| [Delete-Log](#command----einternaldocumenthistroydelete-log)                | `$e.internal('document/history/delete-log')`        | Delete log.
+| [End-Log](#command----einternaldocumenthistroyend-log)                      | `$e.internal('document/history/end-log')`           | End log.
+| [End-Transaction](#command----einternaldocumenthistroyend-transaction)      | `$e.internal('document/history/end-transaction')`   | End Transaction.
+| [Log-Sub-Item](#command----einternaldocumenthistroylog-sub-item)            | `$e.internal('document/history/log-sub-item')`      | Lob sub item.
+| [Start-Log](#command----einternaldocumenthistroystart-log)                  | `$e.internal('document/history/start-log')`         | Start log.
 
 ## _Command_ -- `$e.run('document/histroy/do')`
 *  **Name**: Undo.
@@ -157,5 +67,96 @@ title, subTitle will be taken from the first transaction item.
 *  **Description**: Redo history step.
 *  **Returns**: `{void}`
 *  **Arguments**: None.
+
+## _Command_ -- `$e.internal('document/histroy/add-transaction')`
+*  **Name**: Add-Transaction.
+*  **Description**: Add item to transactions.
+*  **Returns**: `{void}`
+*  **Arguments**: 
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _container_  | `{Container}`         | **require**   | Container log.
+    | _containers_ | `{Array.<Container>}` | **require**   | Containers log.
+    | _type_       | `{String}`            | **require**   | Type
+    | _title_      | `{String}`            | **optional**  | Title.
+    | _subTitle_   | `{String}`            | **optional**  | Sub title.
+    | _restore_    | `{function()}`        | **optional**  | Restore function.
+
+## _Command_ -- `$e.internal('document/histroy/clear-transaction')`
+*  **Name**: Delete-Transaction.
+*  **Description**: Clear transactions list.
+*  **Returns**: `{void}`
+*  **Arguments**: None.
+
+## _Command_ -- `$e.internal('document/histroy/delete-log')`
+*  **Name**: Delete-Log.
+*  **Description**: Delete logged history.
+*  **Returns**: `{void}`
+*  **Arguments**: 
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _id_         | `{Number}`            | **required**  | Id of logged history to delete.
+    
+## _Command_ -- `$e.internal('document/histroy/end-log')`
+*  **Name**: End-Log.
+*  **Description**: End logged history.
+*  **Returns**: `{void}`
+*  **Arguments**: None.
+
+## _Command_ -- `$e.internal('document/histroy/end-transaction')`
+*  **Name**: End-Transaction.
+*  **Description**: End transaction, will log the first and the last transaction, as new logged history.
+title, subTitle will be taken from the first transaction item.
+*  **Returns**: `{void}`
+*  **Arguments**: None.
+
+## _Command_ -- `$e.internal('document/histroy/log-sub-item')`
+*  **Name**: Log-Sub-Item.
+*  **Description**: Log sub item, Each history item can have sub items ( non visual at history panel ).
+*  **Returns**: `{void}`
+*  **Arguments**: 
+
+    | Property     | Type                  | Requirement    | Description |
+    |---           |---                    |---             |---|
+    | _id_         | `{Number}`            | **optional**   | Id of history item, to be sub item of. default: `{elementor.documents.currentDocument.history.getCurrentId()}`.
+    | _container_  | `{Container}`         | **optional**   | Container log.
+    | _containers_ | `{Array.<Container>}` | **optional**   | Containers log.
+    | _type_       | `{String}`            | **optional**   | Type
+    | _title_      | `{String}`            | **optional**   | Title.
+    | _subTitle_   | `{String}`            | **optional**   | Sub title.
+    | _restore_    | `{function()}`        | **optional**   | Restore function.
+
+## _Command_ -- `$e.internal('document/histroy/start-log')`
+*  **Name**: Start-Log.
+*  **Description**: Start log item.
+*  **Returns**: `{Number}` *log id*.
+*  **Arguments**: 
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _container_  | `{Container}`         | **require**   | Container log.
+    | _containers_ | `{Array.<Container>}` | **require**   | Containers log.
+    | _type_       | `{String}`            | **require**   | Type
+    | _title_      | `{String}`            | **require**   | Title.
+    | _subTitle_   | `{String}`            | **optional**  | Sub title.
+    | _restore_    | `{function()}`        | **optional**  | Restore function.
+*  **Examples**:
+    ```javascript
+    id = $e.internal( 'document/history/start-log', { 
+      type: 'custom',
+      title: 'My custom title'
+    } );
+    ```
+    Result:
+    
+    ![history-with-custom-title](../../../../../../images/edocument-history/history-with-custom-title.png)
+    ```javascript
+    $e.internal( 'document/history/delete-log', { id } ); 
+    ```
+    Result:
+    
+    ![history-empty](../../../../../../images/edocument-history/history-empty.png)
 
 ### [Back](../readme.md) 
