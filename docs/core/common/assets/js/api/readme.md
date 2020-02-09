@@ -16,10 +16,11 @@
 
 
 # Aliases
-| Alias        | Original            | Description			     |
-|--------------|---------------------|---------------------------|
-| `$e.run()`   | `$e.commands.run()` | Run command.              |
-| `$e.route()` | `$e.routes.run()`   | Run route ( open route ). |
+| Alias           | Original                    | Description			      |
+|-----------------|-----------------------------|---------------------------|
+| `$e.run()`      | `$e.commands.run()`         | Run command.              |
+| `$e.internal()` | `$e.commandsInternal.run()` | Run internal command.     |
+| `$e.route()`    | `$e.routes.run()`           | Run route ( open route ). |
 
 # Quickstart
     TODO
