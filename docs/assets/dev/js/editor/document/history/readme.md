@@ -23,9 +23,9 @@ historyTypes = {
 ## Component `document/history/` -- Commands
 | Command                                                                | Access                                             | Description         
 |------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------
-| [Add-Transaction](#)                                                   | `$e.run('document/history/add-transaction')`       | 
-| [Clear-Transaction](#)                                                 | `$e.run('document/history/clear-transaction')`     | 
-| [Delete-Log](#)                                                        | `$e.run('document/history/delete-log')`            | 
+| [Add-Transaction](#command----erundocumenthistroyadd-transaction)      | `$e.run('document/history/add-transaction')`       | 
+| [Clear-Transaction](#command----erundocumenthistroyclear-transaction)  | `$e.run('document/history/clear-transaction')`     | 
+| [Delete-Log](#command----erundocumenthistroydelete-log)                | `$e.run('document/history/delete-log')`            | 
 | [End-Log](#)                                                           | `$e.run('document/history/end-log')`               | 
 | [End-Transaction](#)                                                   | `$e.run('document/history/end-transaction')`       | 
 | [Log-Sub-Item](#)                                                      | `$e.run('document/history/log-sub-item')`          | 
@@ -66,6 +66,12 @@ historyTypes = {
     |---           |---                    |---            |---|
     | _id_         | `{Number}`            | **required**  | Id of logged history to delete.
     
+## _Command_ -- `$e.run('document/histroy/end-log')`
+*  **Name**: End-Log.
+*  **Description**: End logged history.
+*  **Returns**: `{void}`
+*  **Arguments**: None.
+
 ## _Command_ -- `$e.run('document/histroy/end-transaction')`
 *  **Name**: End-Transaction.
 *  **Description**: End transaction, will log the first and the last transaction, as new logged history.
