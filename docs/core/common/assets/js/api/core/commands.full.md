@@ -33,6 +33,10 @@
 <dd><p>Function getCurrentFirst().</p>
 <p>Receive first command that currently running.</p>
 </dd>
+<dt><a href="#getCurrentLast">getCurrentLast()</a> ⇒ <code>string</code></dt>
+<dd><p>Function getCurrentLast().</p>
+<p>Receive last command that currently running.</p>
+</dd>
 <dt><a href="#getCurrentFirstTrace">getCurrentFirstTrace()</a> ⇒ <code>string</code></dt>
 <dd><p>Function getCurrentFirstTrace().</p>
 <p>Receive first command in trace that currently running</p>
@@ -153,6 +157,14 @@ Receive currently running command args.
 Function getCurrentFirst().
 
 Receive first command that currently running.
+
+**Kind**: global function  
+<a name="getCurrentLast"></a>
+
+## getCurrentLast() ⇒ <code>string</code>
+Function getCurrentLast().
+
+Receive last command that currently running.
 
 **Kind**: global function  
 <a name="getCurrentFirstTrace"></a>
