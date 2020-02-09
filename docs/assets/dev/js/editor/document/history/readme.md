@@ -23,17 +23,21 @@ historyTypes = {
 ## Component `document/history/` -- Commands
 | Command                                                                | Access                                             | Description         
 |------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------
-| [Add-Transaction](#command----erundocumenthistroyadd-transaction)      | `$e.run('document/history/add-transaction')`       | 
-| [Clear-Transaction](#command----erundocumenthistroyclear-transaction)  | `$e.run('document/history/clear-transaction')`     | 
-| [Delete-Log](#command----erundocumenthistroydelete-log)                | `$e.run('document/history/delete-log')`            | 
-| [End-Log](#command----erundocumenthistroyend-log)                      | `$e.run('document/history/end-log')`               | 
-| [End-Transaction](#command----erundocumenthistroyend-transaction)      | `$e.run('document/history/end-transaction')`       | 
-| [Log-Sub-Item](#command----erundocumenthistroylog-sub-item)            | `$e.run('document/history/log-sub-item')`          | 
-| [Start-Log](#command----erundocumenthistroystart-log)                  | `$e.run('document/history/start-log')`             | 
-| [Do](#command----erundocumenthistroydo)                                | `$e.run('document/history/do')`                    | 
-| [Undo](#command----erundocumenthistroyundo)                            | `$e.run('document/history/undo')`                  | 
-| [Undo-All](#command----erundocumenthistroyundo-all)                    | `$e.run('document/history/undo-all')`              | 
-| [Redo](#command----erundocumenthistroyredo)                            | `$e.run('document/history/redo')`                  | 
+| [Do](#command----erundocumenthistroydo)                                | `$e.run('document/history/do')`                    | Do history item.
+| [Undo](#command----erundocumenthistroyundo)                            | `$e.run('document/history/undo')`                  | Undo history item.
+| [Undo-All](#command----erundocumenthistroyundo-all)                    | `$e.run('document/history/undo-all')`              | Undo all history items.
+| [Redo](#command----erundocumenthistroyredo)                            | `$e.run('document/history/redo')`                  | Redo history item.
+
+## Component `document/history/` -- Internal Commands
+| Command                                                                | Access                                              | Description         
+|------------------------------------------------------------------------|-----------------------------------------------------|-----------------------------------------
+| [Add-Transaction](#command----erundocumenthistroyadd-transaction)      | `$e.internal('document/history/add-transaction')`   | Add transaction item.
+| [Clear-Transaction](#command----erundocumenthistroyclear-transaction)  | `$e.internal('document/history/clear-transaction')` | Clear transaction.
+| [Delete-Log](#command----erundocumenthistroydelete-log)                | `$e.internal('document/history/delete-log')`        | Delete log.
+| [End-Log](#command----erundocumenthistroyend-log)                      | `$e.internal('document/history/end-log')`           | End log.
+| [End-Transaction](#command----erundocumenthistroyend-transaction)      | `$e.internal('document/history/end-transaction')`   | End Transaction.
+| [Log-Sub-Item](#command----erundocumenthistroylog-sub-item)            | `$e.internal('document/history/log-sub-item')`      | Lob sub item.
+| [Start-Log](#command----erundocumenthistroystart-log)                  | `$e.internal('document/history/start-log')`         | Start log.
 
 ## _Command_ -- `$e.run('document/histroy/add-transaction')`
 *  **Name**: Add-Transaction.
