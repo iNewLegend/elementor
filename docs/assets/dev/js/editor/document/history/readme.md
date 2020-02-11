@@ -53,7 +53,7 @@ historyTypes = {
     
     | Editor | Preview    |
     |---:|:---|
-    | ![edit-heading-with-dynamic-title-date](../../../../../../images/edocument-dynamic/edit-heading-with-dynamic-title-date.png) | ![widget-heading-with-dynamic-title-date](../../../../../../images/base/widget-heading.png)<br>![widget-icon](../../../../../../images/base/widget-icon.png)
+    | ![edit-heading-with-dynamic-title-date](../../../../../../images/edocument-dynamic/edit-heading-with-dynamic-title-date.png) | ![widget-heading-with-dynamic-title-date](../../../../../../images/base/widget-heading.png) <br> ![widget-icon](../../../../../../images/base/widget-icon.png)
 
 ## _Command_ -- `$e.run('document/histroy/undo')`
 *  **Name**: Undo.
