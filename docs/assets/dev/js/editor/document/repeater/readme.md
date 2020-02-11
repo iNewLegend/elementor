@@ -11,10 +11,10 @@
 ## Component `document/repeater/` -- Commands
 | Command                                                                | Access                                             | Description         
 |------------------------------------------------------------------------|----------------------------------------------------|-----------------------------------------
-| [Duplicate](#)                                                         | `$e.run('document/repeater/duplicate')`            | Duplicate repeater item.
-| [Insert](#)                                                            | `$e.run('document/repeater/insert')`               | Insert repeater item.
-| [Move](#)                                                              | `$e.run('document/repeater/move')`                 | Move repeater item.
-| [Remove](#)                                                            | `$e.run('document/repeater/remove')`               | Remove repeater item.
+| [Duplicate](#command----erundocumentrepeaterduplicate)                 | `$e.run('document/repeater/duplicate')`            | Duplicate repeater item.
+| [Insert](#command----erundocumentrepeaterinsert)                       | `$e.run('document/repeater/insert')`               | Insert repeater item.
+| [Move](#command----erundocumentrepeatermove)                           | `$e.run('document/repeater/move')`                 | Move repeater item.
+| [Remove](#command----erundocumentrepeaterremove)                       | `$e.run('document/repeater/remove')`               | Remove repeater item.
 
 ## _Command_ -- `$e.run('document/repeater/duplicate')`
 *  **Name**: Duplicate.
