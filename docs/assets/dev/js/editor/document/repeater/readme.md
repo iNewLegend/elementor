@@ -81,7 +81,4 @@
     | _name_        | `{String}`            | **require**   | Name of the repeater.
     | _index_       | `{Number}`            | **require**   | Index of the repeater item to remove.
 
-
-
-
 ### [Back](../readme.md) 
