@@ -48,7 +48,12 @@ historyTypes = {
     | Property     | Type                  | Requirement    | Description |
     |---           |---                    |---             |---|
     | _index_         | `{Number}`         | **optional**   | Index of history item.
-
+* **Examples**:
+    Assuming we have this scenario.
+    
+    | Editor | Preview    |
+    |---:|:---|
+    | ![edit-heading-with-dynamic-title-date](../../../../../../images/edocument-dynamic/edit-heading-with-dynamic-title-date.png) | ![widget-heading-with-dynamic-title-date](../../../../../../images/base/widget-heading.png)<br>![widget-icon](../../../../../../images/base/widget-icon.png)
 
 ## _Command_ -- `$e.run('document/histroy/undo')`
 *  **Name**: Undo.
@@ -84,7 +89,7 @@ historyTypes = {
     | _restore_    | `{function()}`        | **optional**  | Restore function.
 
 ## _Command_ -- `$e.internal('document/histroy/clear-transaction')`
-*  **Name**: Delete-Transaction.
+*  **Name**: Clear-Transaction.
 *  **Description**: Clear transactions list.
 *  **Returns**: `{void}`
 *  **Arguments**: None.
@@ -98,7 +103,10 @@ historyTypes = {
     | Property     | Type                  | Requirement   | Description |
     |---           |---                    |---            |---|
     | _id_         | `{Number}`            | **required**  | Id of logged history to delete.
-    
+
+*  **Examples**:
+     Look at [`$e.internal('document/histroy/start-log')`](#command----einternaldocumenthistroystart-log) example.
+
 ## _Command_ -- `$e.internal('document/histroy/end-log')`
 *  **Name**: End-Log.
 *  **Description**: End logged history.
