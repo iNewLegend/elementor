@@ -37,3 +37,5 @@
 *  **Name**: Paste-Style.
 *  **Description**: Paste style to current selected element.
 *  **Returns**: `{ false | Container | Array.<Container>}` *Pasted container(s)*.
+
+### [Back](../readme.md) 
