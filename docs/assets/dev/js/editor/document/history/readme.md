@@ -49,6 +49,7 @@ historyTypes = {
     |---           |---                    |---             |---|
     | _index_         | `{Number}`         | **optional**   | Index of history item.
 * **Examples**:
+
 [![AQN194H0Jio](https://img.youtube.com/vi/AQN194H0Jio/0.jpg)](https://www.youtube.com/watch?v=AQN194H0Jio)
 
 ## _Command_ -- `$e.run('document/histroy/undo')`
