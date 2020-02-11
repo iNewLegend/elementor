@@ -20,10 +20,42 @@
 | [Save](save/readme.md)         | `$e.components.get('document/save')`     | Responsible for saving, publish, draft, of the document.
 | [UI](ui/readme.md)             | `$e.components.get('document/ui')`       | Irregular component for handling UI shortcuts.
 
-## Component `document/` -- Commands
-No commands.
-
 ## Component `document/` -- Utils
-TODO
+| Util Name                                     | Access Util                                               | Description         
+|-----------------------------------------------|-----------------------------------------------------------|-----------------------
+| [findViewRecursive](#)                        | `$e.components.get('document').utils.findViewRecursive()` |
+| [findViewById](#)                             | `$e.components.get('document').utils.findViewById()`      |
+| [findContainerById](#)                        | `$e.components.get('document').utils.findContainerById()` |
+
+## _Util_ -- `$e.components.get('document').utils.findViewRecursive()`
+*  **Name**: findViewRecursive.
+*  **Description**: Find view recursively.
+*  **Returns**: `{Array}`
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _parent_     | 
+    | _key_        | 
+    | _value_      | 
+    | _multiple_   | `{Boolean}`           | **optional**  | default: `{false}`.
+
+## _Util_ -- `$e.components.get('document').utils.findViewById()`
+*  **Name**: findViewById.
+*  **Description**: Find view by id.
+*  **Returns**: `{ View | Array.<View> }`
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _id_         | {String}              | **required**  | Id of the element. 
+
+## _Util_ -- `$e.components.get('document').utils.findContainerById()`
+*  **Name**: findContainerById.
+*  **Description**: Find container by id.
+*  **Returns**: `{ Container | Array.<Container> }`
+
+    | Property     | Type                  | Requirement   | Description |
+    |---           |---                    |---            |---|
+    | _id_         | {String}              | **required**  | Id of the element. 
+    
 
 ### [Back](../../../../../core/common/assets/js/api/core/commands-methods/getall.md) 
