@@ -64,3 +64,17 @@
     | _name_        | `{String}`            | **require**   | Name of the repeater.
     | _sourceIndex_ | `{Number}`            | **require**   | Source index of the repeater item.
     | _targetIndex_ | `{Number}`            | **require**   | Target index of the repeater item.
+
+## _Command_ -- `$e.run('document/repeater/remove')`
+*  **Name**: Remove.
+*  **Description**: Remove repeater item.
+*  **Returns**: `{Container | Array.<Container>}` *Removed container(s)*.
+*  **Arguments**: 
+
+    | Property      | Type                  | Requirement   | Description |
+    |---            |---                    |---            |---|
+    | _container_   | `{Container}`         | **require**   | Widget container.
+    | _containers_  | `{Array.<Container>}` | **require**   | Widgets containers.
+    | _name_        | `{String}`            | **require**   | Name of the repeater.
+    | _index_       | `{Number}`            | **require**   | Index of the repeater item to remove.
+
