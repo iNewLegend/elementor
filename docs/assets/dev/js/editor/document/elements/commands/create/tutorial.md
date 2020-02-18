@@ -1,7 +1,37 @@
-##  `$e.run('document/elements/create')`
-### Create an element.
+# Command
+  `$e.run('document/elements/create')`
 
-#### How to create widget? 
+### User Action / Area of effect
+     Create an element.
+     
+### Effect
+    Requested element(s) appears in requested element-container(s).
+
+## Input
+| Property     | Type                  | Requirement   | Description |
+|---           |---                    |---            |---|
+| _container_  | `{Container}`         | **required**  | Container target.
+| _containers_ | `{Array.<Container>}` | **required**  | Containers target.
+| _model_      | `{Object}`            | **required**  | Model to create.
+| _options_    | `{Object}`            | **optional**  | 
+
+**_options:_**
+
+| Property    | Type                              | Default   | Description                            |
+|-------------|-----------------------------------|-----------|----------------------------------------|
+| at          | `{Number}`                        | `{null}`  | Position (null means last). 
+| clone       | `{Boolean}`                       | `{false}` | Generate unique id for the model.
+| edit        | `{Boolean}`                       | `{false}` | Is turn edit panel for the new element.
+| onBeforeAdd | `{function()}`                    |           | Run callback before add.
+| onAfterAdd  | `{function( newModel, newView )}` |           | Run callback after add.
+| trigger     | `{Boolean}`                       | `{false}` | *Deprecated*.
+    
+    
+## Output
+   * **Fails**: Throws error on fail.
+   * **Success**: Returns new created element container `{Container | Array.<Container>}`.
+   
+## How to create widget? 
 To create widget you will be first need a column - and to have column you need a section.
 
 * So let create the section with one column that later will contain our widget:
@@ -28,3 +58,4 @@ to create the widget, you need to pass the column id:
         } );
     ```
     _and the result will be a **section** that have one **column** and that column have heading **widget** in it._
+
