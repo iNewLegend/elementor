@@ -46,15 +46,23 @@ To create widget you will be first need a column - and to have column you need a
     ```
     _the result will be a new section with 1 column_.
 * After we have our section with column, we finally can create a widget,
-to create the widget, you need to pass the column id:
-
+to create the widget, you need to pass the column container:
+there is **two** ways to get the container.
+    ```javascript
+    container = elementor.getContainer( 'COLUMN ID' ) // Replace 'COLUMN ID' with your column id.
+    ```
+    OR
+    ```javascript
+    container = eSection.children[ 0 ];
+    ```
+    Now create the heading widget.
     ```javascript
         eWidget = $e.run( 'document/elements/create', {
             model: {
                 elType: 'widget',
                 widgetType: 'heading',
             },
-            container: elementor.getContainer( 'COLUMN ID' ) // Replace 'COLUMN ID' with your column id.
+            container,
         } );
     ```
     _and the result will be a **section** that have one **column** and that column have heading **widget** in it._
