@@ -19,11 +19,11 @@
    
 ## How to duplicate element? 
      Duplicate will work for section, columns & widgets.
-   * Assuming we have this section, and want to duplicate it, the section container is stored at variable:
+   * Assuming we have section, and want to duplicate it, the section container is stored at variable:
    `eSection`
    ```javascript
     $e.run( 'document/elements/duplicate', { 
         container: eSection,
     } );
    ```
-    
+   _and the result new **section** with the same structure appears below the requested **section**._
