@@ -19,7 +19,7 @@
    * **Success**: Returns new pasted element container `{Container | Array.<Container>}`.
    
 ## How to copy and paste an element? 
-To copy paste element we first need to have one. then we can paste.
+To copy & paste element we first need to have one. then we can paste.
 * So the following code will create a section, column, and simple heading widget at the column.
     ```javascript
         // Create section with one column
