@@ -1,5 +1,5 @@
 # Command
-  `$e.run('document/elements/copy-all')`
+    $e.run('document/elements/copy-all')
 
 ### User Action / Area of effect
      Copy all elements.

@@ -1,5 +1,5 @@
 # Command
-  `$e.run('document/elements/reset-style')`
+    $e.run('document/elements/reset-style')
 
 ### User Action / Area of effect
     Reset style of an element.

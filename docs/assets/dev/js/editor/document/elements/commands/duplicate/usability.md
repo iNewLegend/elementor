@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/duplicate')`
+    $e.run('document/elements/duplicate')
 
 ### User Action / Area of effect
     Duplicate an element.

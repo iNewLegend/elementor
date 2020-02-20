@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/empty')`
+    $e.run('document/elements/empty')
 
 ### User Action / Area of effect
     Delete all the elements from the document.

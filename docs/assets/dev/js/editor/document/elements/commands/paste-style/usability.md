@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/paste-style')`
+    $e.run('document/elements/paste-style')
 
 ### User Action / Area of effect
     Paste style to an element.

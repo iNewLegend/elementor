@@ -1,5 +1,5 @@
 # Command
-  `$e.run('document/elements/delete')`
+    $e.run('document/elements/delete')
 
 ### User Action / Area of effect
     Delete an element.

@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/paste')`
+    $e.run('document/elements/paste')
 
 ### User Action / Area of effect
     Paste an element.

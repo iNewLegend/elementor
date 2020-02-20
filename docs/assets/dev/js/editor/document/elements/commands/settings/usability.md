@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/settings')`
+    $e.run('document/elements/settings')
 
 ### User Action / Area of effect
     Change the settings of element / modify the elementor json model of element.
