@@ -19,13 +19,21 @@
    
 ## How to duplicate element? 
      Duplicate will work for section, columns & widgets.
-   * Assuming we have section, and want to duplicate it, the section container is stored at variable:
-   `eSection`
-   ```javascript
-    $e.run( 'document/elements/duplicate', { 
-        container: eSection,
-    } );
-   ```
+   * Create a section that later will be duplicated:
+       ```javascript
+       // Create a section with one column and return the section container.
+       eSection = $e.run( 'document/elements/create', {
+           model: { elType: 'section' },                         // Model to create.
+           columns: 1,                                           // Number of columns to create.
+           container: elementor.getContainer( 'document' ),      // A container where to create the element.
+       } );
+       ```
+   * Now duplicate the section we just created:
+     ```javascript
+     $e.run( 'document/elements/duplicate', { 
+         container: eSection,
+     } );
+     ```
    _and the result new **section** with the same structure appears below the requested **section**._
 
 ### [Back](../usability.index.md) 
