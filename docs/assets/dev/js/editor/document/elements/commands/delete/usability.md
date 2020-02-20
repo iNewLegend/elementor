@@ -20,7 +20,7 @@
 ## How to delete element?
 ```javascript
 $e.run( 'document/elements/delete', {
-    container: elementor.getContainer( 'COLUMN ID' ) // Replace 'COLUMN ID' with your column id.
+    container: elementor.getContainer( 'ELEMENT ID' ) // Replace 'ELEMENT ID' with your element id.
 } );
 ```
 
