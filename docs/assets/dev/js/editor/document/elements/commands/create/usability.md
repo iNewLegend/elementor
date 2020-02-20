@@ -1,8 +1,8 @@
 # Command
-  `$e.run('document/elements/create')`
+    `$e.run('document/elements/create')`
 
 ### User Action / Area of effect
-     Create an element.
+    Create an element.
      
 ### Effect
     Requested element(s) appears in requested element-container(s).
@@ -37,12 +37,12 @@ To create widget you will be first need a column - and to have column you need a
 * So let create the section with one column that later will contain our widget:
 
     ```javascript
-        // Create a section with one column and return the section container.
-        eSection = $e.run( 'document/elements/create', {
-            model: { elType: 'section' },                         // Model to create.
-            columns: 1,                                           // Number of columns to create.
-            container: elementor.getContainer( 'document' ),      // A container where to create the element.
-        } );
+    // Create a section with one column and return the section container.
+    eSection = $e.run( 'document/elements/create', {
+        model: { elType: 'section' },                         // Model to create.
+        columns: 1,                                           // Number of columns to create.
+        container: elementor.getContainer( 'document' ),      // A container where to create the element.
+    } );
     ```
     _the result will be a new section with 1 column_.
 * After we have our section with column, we finally can create a widget,
@@ -57,12 +57,12 @@ there is **two** ways to get the container.
     ```
     Now create the heading widget.
     ```javascript
-        eWidget = $e.run( 'document/elements/create', {
-            model: {
-                elType: 'widget',
-                widgetType: 'heading',
-            },
-            container,
-        } );
+    eWidget = $e.run( 'document/elements/create', {
+        model: {
+            elType: 'widget',
+            widgetType: 'heading',
+        },
+        container,
+    } );
     ```
     _and the result will be a **section** that have one **column** and that column have heading **widget** in it._

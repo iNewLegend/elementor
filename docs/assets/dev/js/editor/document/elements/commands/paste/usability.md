@@ -1,8 +1,8 @@
 # Command
-  `$e.run('document/elements/paste')`
+    `$e.run('document/elements/paste')`
 
 ### User Action / Area of effect
-     Paste an element.
+    Paste an element.
      
 ### Effect
     Copied element(s) appears in requested element-container(s).
@@ -22,32 +22,32 @@
 To copy & paste element we first need to have one. then we can paste.
 * So the following code will create a section, column, and simple heading widget at the column.
     ```javascript
-        // Create section with one column
-        eSection = $e.run( 'document/elements/create', { 
-            model: { elType: 'section' },
-            columns: 1,
-            container: elementor.getContainer( 'document' )
-        }  )
-    
-        // Create heading widget.
-        $e.run( 'document/elements/create', {
-            model: {
-                elType: 'widget',
-                widgetType: 'heading'
-            }, 
-            container: eSection.children[ 0 ],      // first children of section means the column.
-        } );
+    // Create section with one column
+    eSection = $e.run( 'document/elements/create', { 
+        model: { elType: 'section' },
+        columns: 1,
+        container: elementor.getContainer( 'document' )
+    }  )
+
+    // Create heading widget.
+    $e.run( 'document/elements/create', {
+        model: {
+            elType: 'widget',
+            widgetType: 'heading'
+        }, 
+        container: eSection.children[ 0 ],      // first children of section means the column.
+    } );
     ```
 * Copy the section we just created.
     ```javascript
-        $e.run( 'document/elements/copy', {
-            container: eSection,
-        } );
+    $e.run( 'document/elements/copy', {
+        container: eSection,
+    } );
     ```
 * Paste the element ( section ) to document.
     ```javascript
-        $e.run( 'document/elements/paste', {
-            container: elementor.getContainer('document' ),
-        } );
+    $e.run( 'document/elements/paste', {
+        container: elementor.getContainer('document' ),
+    } );
     ```
    _and the result new **section** with the same structure appears below the requested **section**._

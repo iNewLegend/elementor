@@ -1,8 +1,8 @@
 # Command
-  `$e.run('document/elements/empty')`
+    `$e.run('document/elements/empty')`
 
 ### User Action / Area of effect
-     Delete all the elements from the document.
+    Delete all the elements from the document.
      
 ### Effect
     All element(s) in document dis-appears.
@@ -18,5 +18,5 @@
 ## How to delete all elements?
 * Simple run this command:
     ```javascript
-      $e.run( 'document/elements/empty', { force: true } );
+    $e.run( 'document/elements/empty', { force: true } );
     ```

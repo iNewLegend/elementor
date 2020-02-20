@@ -12,5 +12,5 @@
    
 ## How to delete element?
 ```javascript
-    $e.run( 'document/elements/copy-all' );
+$e.run( 'document/elements/copy-all' );
 ```

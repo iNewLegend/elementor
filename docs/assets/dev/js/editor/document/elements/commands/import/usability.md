@@ -1,8 +1,8 @@
 # Command
-  `$e.run('document/elements/import')`
+    `$e.run('document/elements/import')`
 
 ### User Action / Area of effect
-     Import elements
+    Import elements
      
 ### Effect
     Requested template appears in requested postion.
