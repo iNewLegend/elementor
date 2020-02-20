@@ -10,7 +10,7 @@
 ## Output
    * **Fails**: Throws error on fail.
    
-## How to delete element?
+## How to copy all element(s)?
 ```javascript
 $e.run( 'document/elements/copy-all' );
 ```
