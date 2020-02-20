@@ -5,7 +5,7 @@
     Duplicate an element.
      
 ### Effect
-    Requested element appears below requested element.
+    Requested element duplicated and appears below requested element.
 
 ## Input
 | Property     | Type                  | Requirement   | Description |
