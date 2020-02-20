@@ -27,11 +27,9 @@
 ## Output
    * **Fails**: Throws error on fail.
    
-## Hint(s)
-    Settings can be changed for every element in the preview.
-    Some of the settings are visual some are data.
-
 ## How to change settings of a widget? 
+    Settings can be changed for every element in the preview.
+    Some of the settings are visual some are not.
 To create widget you will be first need a column - and to have column you need a section.
 
 * So the following code will create a section, column, and simple heading widget at the column.
