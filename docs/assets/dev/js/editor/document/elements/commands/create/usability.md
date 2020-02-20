@@ -1,5 +1,5 @@
 # Command
-    `$e.run('document/elements/create')`
+    $e.run('document/elements/create')
 
 ### User Action / Area of effect
     Create an element.
