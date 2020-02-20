@@ -20,7 +20,7 @@
 ## How to copy element?
 ```javascript
 $e.run( 'document/elements/copy', {
-    container: elementor.getContainer( 'COLUMN ID' ) // Replace 'COLUMN ID' with your column id.
+    container: elementor.getContainer( 'ELEMENT ID' ) // Replace 'ELEMENT ID' with your element id.
 } );
 ```
 
