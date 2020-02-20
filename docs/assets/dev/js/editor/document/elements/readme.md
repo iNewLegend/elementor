@@ -78,7 +78,7 @@
     ```
     OR
     ```javascript
-    const eColumn = $e.components.get( 'document' ).utils.findContainerById('cb70e3c');
+    const eColumn = elementor.getContainer('cb70e3c');
     ```
     Then let create heading widget at the column we reach above:
     ```javascript
@@ -108,7 +108,7 @@
     ![widget-heading](../../../../../../images/base/widget-heading.png)
     ```javascript
     // Get section container.
-    const eSection = $e.components.get( 'document' ).utils.findContainerById('886643f');
+    const eSection = elementor.getContainer('886643f');
     
     $e.run( 'document/elements/delete', { 
         container: eSection,
@@ -132,7 +132,7 @@
     ![widget-heading](../../../../../../images/base/widget-heading.png)
     ```javascript
     // Get section container.
-    const eSection = $e.components.get( 'document' ).utils.findContainerById('886643f');
+    const eSection = elementor.getContainer('886643f');
     
     $e.run( 'document/elements/duplicate', { 
         container: eSection,
@@ -198,8 +198,8 @@
     Copy widget and paste it into column.
 
     ```javascript
-    const eColumn = $e.components.get( 'document' ).utils.findContainerById('cb70e3c'),
-        eWidget = $e.components.get( 'document' ).utils.findContainerById('2e4b783');
+    const eColumn = elementor.getContainer('cb70e3c'),
+        eWidget = elementor.getContainer('2e4b783');
     
     $e.run('document/elements/copy', { 
         container: eWidget
@@ -231,8 +231,8 @@
     ![widget-heading-another-heading-with-special-style](../../../../../../images/edocument-elements/widget-heading-another-heading-with-special-style.png)
 
     ```javascript
-    const eSpecialWidget = $e.components.get( 'document' ).utils.findContainerById('2e4b783'),
-        eDefaultWidget = $e.components.get( 'document' ).utils.findContainerById('192125b');
+    const eSpecialWidget = elementor.getContainer('2e4b783'),
+        eDefaultWidget = elementor.getContainer('192125b');
     
     $e.run('document/elements/copy', { 
         container: eDefaultWidget
@@ -262,7 +262,7 @@
     ![widget-heading-another-heading-with-special-style](../../../../../../images/edocument-elements/widget-heading-another-heading-with-special-style.png)
 
     ```javascript
-    const eWidget = $e.components.get( 'document' ).utils.findContainerById('2e4b783');
+    const eWidget = elementor.getContainer('2e4b783');
     
     $e.run('document/elements/reset-style', { 
       container: eWidget
@@ -298,7 +298,7 @@
         ![widget-heading](../../../../../../images/base/widget-heading.png)
     
         ```javascript
-        const eWidget = $e.components.get( 'document' ).utils.findContainerById('2e4b783');
+        const eWidget = elementor.getContainer('2e4b783');
         
         $e.run('document/elements/settings', { 
           container: eWidget,
