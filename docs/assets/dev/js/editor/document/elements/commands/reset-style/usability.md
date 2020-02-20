@@ -48,7 +48,7 @@ To reset style to an element we first need to have one with non **default** styl
     ```
 * Reset style of element ( our widget ).
     ```javascript
-        $e.run( 'document/elements/paste-style', {
+        $e.run( 'document/elements/reset-style', {
             container: eWidget,
         } );
     ```
