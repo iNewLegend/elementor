@@ -70,3 +70,5 @@ To copy & paste style to an element we first need to have one with non **default
     } );
     ```
    _and the result new **widget** ( eTargetWidget ) will have the same text color as first created **widget**._
+
+### [Back](../usability.index.md) 

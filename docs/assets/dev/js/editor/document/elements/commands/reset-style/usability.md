@@ -53,3 +53,5 @@ To reset style to an element we first need to have one with non **default** styl
     } );
     ```
    _and the result new **widget** ( eWidget ) will have text color as it was when it was created._
+
+### [Back](../usability.index.md) 

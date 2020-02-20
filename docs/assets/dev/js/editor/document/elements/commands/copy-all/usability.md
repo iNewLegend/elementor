@@ -14,3 +14,5 @@
 ```javascript
 $e.run( 'document/elements/copy-all' );
 ```
+
+### [Back](../usability.index.md) 
