@@ -17,7 +17,7 @@
 ## Output
    * **Fails**: Throws error on fail.
    
-## How to delete element?
+## How to copy element?
 ```javascript
 $e.run( 'document/elements/copy', {
     container: elementor.getContainer( 'COLUMN ID' ) // Replace 'COLUMN ID' with your column id.
