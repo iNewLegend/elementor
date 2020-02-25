@@ -37,9 +37,11 @@
     ```
 * Now enable dynamic post-date for that widget.
     ```javascript
+    postDateTag = elementor.dynamicTags.tagDataToTagText( elementor.helpers.getUniqueID(), 'post-date', new Backbone.Model( {} ));
+
     $e.run( 'document/dynamic/enable', {
         settings: {
-            title: '[elementor-tag id="3d0ffad" name="post-date" settings="%7B%7D"]',
+            title: postDateTag,
         },
         container: eWidget,             // Heading widget container.
     } );
