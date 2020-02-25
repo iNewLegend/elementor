@@ -17,16 +17,16 @@
    
 ## How to do history item? 
 * Create a section
-```javascript
-$e.run( 'document/elements/create', {
-    model: { elType: 'section' },
-    container: elementor.getContainer( 'document' ),
-} );
-```
+    ```javascript
+    $e.run( 'document/elements/create', {
+        model: { elType: 'section' },
+        container: elementor.getContainer( 'document' ),
+    } );
+    ```
 * Do 'Editing started' item.
-```javascript
-$e.run( 'document/history/do', { index: 1 } );  // Editing started.
-```
+    ```javascript
+    $e.run( 'document/history/do', { index: 1 } );  // Editing started.
+    ```
 * And the result section is deleted.
 
 ### [Back](../usability.index.md) 
