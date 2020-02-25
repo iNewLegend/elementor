@@ -113,6 +113,10 @@ export default class ComponentBase extends elementorModules.Module {
 		$e.routes.register( this, route, callback );
 	}
 
+	unregisterRoute( route ) {
+		$e.routes.unregister( this, route );
+	}
+
 	registerTabRoute( tab ) {
 		this.registerRoute( tab, () => this.activateTab( tab ) );
 	}
@@ -178,6 +182,7 @@ export default class ComponentBase extends elementorModules.Module {
 
 	removeTab( tab ) {
 		delete this.tabs[ tab ];
+		this.unregisterRoute( tab );
 	}
 
 	hasTab( tab ) {
