@@ -21,7 +21,7 @@
     |---           |---                    |---            |---|
     | _container_  | `{Container}`         | **required**  | Container to disable.
     | _containers_ | `{Array.<Container>}` | **required**  | Containers to disable.
-    | _settings_   | `{Object}             | **required**  | Dynamic settings to disable <TODO EXPLAIN WHY>
+    | _settings_   | `{Object}`             | **required**  | Dynamic settings to disable <TODO EXPLAIN WHY>
 
 * **Examples**:
     Assuming we have a widget with dynamic tag for *title*, and want to disable it.
