@@ -1,11 +1,11 @@
 # Command
-    $e.run('document/history/undo')
+    $e.run('document/history/redo')
 
 ### User Action / Area of effect
-    Undo History item
+    Redo History item
      
 ### Effect
-    Undo history item, change the editor preview depends on the item.
+    Redo history item, change the editor preview depends on the item.
 
 ## Output
    * **Fails**: Throws error on fail.
@@ -23,5 +23,9 @@
     $e.run( 'document/history/undo' );
     ```
 * And the result section is deleted.
+    ```javascript
+    $e.run( 'document/history/redo' );
+    ```
+* And the result section is back.
 
 ### [Back](../usability.index.md) 
