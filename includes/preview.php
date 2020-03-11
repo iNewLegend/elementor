@@ -18,6 +18,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Preview extends App {
 
 	/**
+	 * Is Preview.
+	 *
+	 * Holds a flag if current request is a preview.
+	 * The flag is not related to a specific post or edit permissions.
+	 *
+	 * @since 2.9.5
+	 * @access private
+	 *
+	 * @var bool Is Preview.
+	 */
+
+	private $is_preview;
+
+	/**
 	 * Post ID.
 	 *
 	 * Holds the ID of the current post being previewed.
@@ -71,6 +85,7 @@ class Preview extends App {
 		}
 
 		$this->post_id = get_the_ID();
+		$this->is_preview = true;
 
 		// Don't redirect to permalink.
 		remove_action( 'template_redirect', 'redirect_canonical' );
@@ -124,6 +139,21 @@ class Preview extends App {
 	 */
 	public function get_post_id() {
 		return $this->post_id;
+	}
+
+	/**
+	 * Is Preview.
+	 *
+	 * Whether current request is the elementor preview iframe.
+	 * The flag is not related to a specific post or edit permissions.
+	 *
+	 * @since 2.9.5
+	 * @access public
+	 *
+	 * @return bool
+	 */
+	public function is_preview() {
+		return $this->is_preview;
 	}
 
 	/**
@@ -251,16 +281,6 @@ class Preview extends App {
 		Plugin::$instance->widgets_manager->enqueue_widgets_scripts();
 
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-		wp_enqueue_script(
-			'elementor-preview',
-			$this->get_js_assets_url( 'preview' ),
-			[
-				'elementor-frontend',
-			],
-			ELEMENTOR_VERSION,
-			true
-		);
 
 		wp_enqueue_script(
 			'elementor-inline-editor',
