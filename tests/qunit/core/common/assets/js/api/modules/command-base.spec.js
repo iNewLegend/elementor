@@ -88,6 +88,31 @@ jQuery( () => {
 				assert.equal( historyDebounceCommand instanceof CommandHistory, true );
 				assert.equal( historyDebounceCommand instanceof CommandHistoryDebounce, true );
 			} );
+
+			QUnit.test( 'instanceOf', ( assert ) => {
+				const internalCommand = new CommandInternalBase( {} ),
+					historyCommand = new class Command extends CommandHistoryHistory {
+						getHistory() {}
+					}( {} ),
+					historyDebounceCommand = new class Command extends CommandHistoryDebounce {
+						getHistory() {}
+					}( {} );
+
+				assert.equal( internalCommand instanceof CommandBase, true );
+				assert.equal( internalCommand instanceof CommandInternalBase, true );
+				assert.equal( internalCommand instanceof CommandHistoryHistory, false );
+				assert.equal( internalCommand instanceof CommandHistoryDebounce, false );
+
+				assert.equal( historyCommand instanceof CommandBase, true );
+				assert.equal( historyCommand instanceof CommandInternalBase, false );
+				assert.equal( historyCommand instanceof CommandHistoryHistory, true );
+				assert.equal( historyCommand instanceof CommandHistoryDebounce, false );
+
+				assert.equal( historyDebounceCommand instanceof CommandBase, true );
+				assert.equal( historyDebounceCommand instanceof CommandInternalBase, false );
+				assert.equal( historyDebounceCommand instanceof CommandHistoryHistory, true );
+				assert.equal( historyDebounceCommand instanceof CommandHistoryDebounce, true );
+			} );
 		} );
 	} );
 } );
