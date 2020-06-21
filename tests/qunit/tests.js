@@ -20,6 +20,7 @@ function initialize() {
 	elementorCommon.ajax.cache[ cacheKey ] = elementor.getConfig().document;
 
 	Ajax.silence();
+	eData.emptyFetch();
 
 	elementor.on( 'preview:loaded', () => {
 		// Disable UI Hooks.
@@ -39,11 +40,11 @@ function initialize() {
 		require( './core/editor/document/dynamic/commands/base/disable-enable.spec' );
 		require( './core/editor/document/globals/commands/base/disable-enable.spec' );
 
+		// TODO: This file should load all core/editor/document components.
 		require( './core/editor/document/component.spec' );
 		require( './core/editor/document/manager.spec' );
 
-		// TODO: Require all components from one file.
-
+		// TODO: Require all components from one file ( PREV TODO ).
 		require( './core/editor/document/elements/component.spec' );
 		require( './core/editor/document/globals/component.spec' );
 		require( './core/editor/document/repeater/component.spec' );
@@ -51,6 +52,8 @@ function initialize() {
 		require( './core/editor/document/history/component.spec' );
 		require( './core/editor/document/ui/component.spec' );
 		require( './core/editor/document/save/component.spec' );
+
+		require( './core/editor/kits/assets/js/component.spec' );
 
 		require( './core/editor/data/globals/component.spec' );
 	} );

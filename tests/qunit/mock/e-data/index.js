@@ -4,5 +4,5 @@ export {
 	clearMock,
 	attachCache,
 	restoreFetch,
-	silence,
+	emptyFetch,
 } from './setup-fetch';

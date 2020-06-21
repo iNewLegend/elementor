@@ -68,3 +68,7 @@ export const attachCache = () => {
 export const restoreFetch = () => {
 	$e.data.fetch = fetchOriginal;
 };
+
+export const emptyFetch = () => {
+	$e.data.fetch = () => Promise.resolve( {} );
+};
