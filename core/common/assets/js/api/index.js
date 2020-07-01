@@ -13,6 +13,7 @@ import Hooks from './core/hooks';
 import Routes from './core/routes';
 import Shortcuts from './core/shortcuts';
 import Data from './core/data.js';
+import tests from 'elementor-tests-qunit/tests';
 
 import * as hookData from './modules/hooks/data/';
 import * as hookUI from './modules/hooks/ui';
@@ -49,6 +50,8 @@ export default class API {
 
 			hookData,
 			hookUI,
+
+			tests,
 		};
 
 		// Backwards compatibility should be last, in order to handle others.
