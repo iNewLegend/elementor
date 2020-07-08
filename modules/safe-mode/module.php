@@ -97,7 +97,7 @@ class Module extends \Elementor\Core\Base\Module {
 		$results = copy_dir( __DIR__ . '/mu-plugin/', WPMU_PLUGIN_DIR );
 
 		if ( is_wp_error( $results ) ) {
-			return false;
+			return;
 		}
 
 		$token = md5( wp_rand() );
@@ -509,7 +509,10 @@ class Module extends \Elementor\Core\Base\Module {
 	}
 
 	public function __construct() {
-		add_action( 'elementor/admin/after_create_settings/elementor-tools', [ $this, 'add_admin_button' ] );
+		if ( current_user_can( 'install_plugins' ) ) {
+			add_action( 'elementor/admin/after_create_settings/elementor-tools', [ $this, 'add_admin_button' ] );
+		}
+
 		add_action( 'elementor/ajax/register_actions', [ $this, 'register_ajax_actions' ] );
 
 		$plugin_file = self::MU_PLUGIN_FILE_NAME;
