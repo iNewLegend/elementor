@@ -10,7 +10,7 @@
 | [Colors](commands/colors/usability.index.md)           | `create` | `$e.data.create('globals/colors')`      | Create color. 
 |                                                        | `get`    | `$e.data.get('globals/colors')`         | Get colors. 
 | |
-| [Typography](#)              | `create` | `$e.data.create('globals/colors')`      | Create typography. 
+| [Typography](commands/typography/usability.index.md)   | `create` | `$e.data.create('globals/colors')`      | Create typography. 
 |                                                        | `get`    | `$e.data.get('globals/colors')`         | Get typography. 
 
 ## All **globals** components
