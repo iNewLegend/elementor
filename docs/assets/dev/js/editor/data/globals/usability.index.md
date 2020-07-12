@@ -16,5 +16,5 @@
 ## All **globals** components
 | Component Name                                       | Access Component                          | Description         
 |------------------------------------------------------|-------------------------------------------|--------------------
-| [Colors](colors/commands/usability.index.md)         | `$e.components.get('globals/colors')`     | Global colors. 
-| [Typography](#) | `$e.components.get('globals/typography')` | Global typography.
+| [Colors](colors/commands/usability.index.md)         | `$e.components.get('globals/colors')`     | Globals colors. 
+| [Typography](typography/commands/usability.index.md) | `$e.components.get('globals/typography')` | Globals typography.
