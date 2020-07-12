@@ -7,7 +7,7 @@
 |--------------------------------------------------------|----------|-----------------------------------------|--------------------
 | [Index](commands/index/usability.md)                   | `get`    | `$e.data.get('globals/index')`          | Get all *globals* data. 
 | |
-| [Colors](#)                  | `create` | `$e.data.create('globals/colors')`      | Create color. 
+| [Colors](commands/colors/usability.index.md)           | `create` | `$e.data.create('globals/colors')`      | Create color. 
 |                                                        | `get`    | `$e.data.get('globals/colors')`         | Get colors. 
 | |
 | [Typography](#)              | `create` | `$e.data.create('globals/colors')`      | Create typography. 
