@@ -2,7 +2,8 @@
   `$e.data.get('globals/index')`
 
 ### User Action / Area of effect
-    Readonly data.
+    Readonly data. 
+    Get all data from all of the globals endpoints.
      
 ### Effect
     Get data from $e.data.cache or remote.
