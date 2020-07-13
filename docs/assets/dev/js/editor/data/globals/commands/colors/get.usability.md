@@ -8,12 +8,17 @@
     Get data from $e.data.cache or remote.
 
 ## Input
-    No addtional inputs.
+* Query params
+
+| Property          | Type                  | Requirement   | Description |
+|---                |---                    |---            |---|
+| _id_              | `{String}`            | **optional**  | ID for specific item.
+   `$e.data.get('globals/colors?id={{ YOUR ID }}')`
 
 ## Output
     Promise
 
-## Example
+## Example all colors
 ```javascript
 const promise = $e.data.get( 'globals/colors' );
 
@@ -46,5 +51,12 @@ promise.then( ( result ) => {
    }
 }
 */
+```
+## Example get primary color
+```javascript
+result = await $e.data.get( 'globals/colors?id=primary' );
+console.log( result.data ); 
+
+// {id: "primary", title: "Primary", value: "#6EC1E4"}.
 ```
 ### [Back](usability.index.md) 

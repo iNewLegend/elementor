@@ -8,8 +8,13 @@
     Get data from $e.data.cache or remote.
 
 ## Input
-    No addtional inputs.
+* Query params
 
+| Property          | Type                  | Requirement   | Description |
+|---                |---                    |---            |---|
+| _id_              | `{String}`            | **optional**  | ID for specific item.
+   `$e.data.get('globals/colors?id={{ YOUR ID }}')`
+   
 ## Output
     Promise
 
@@ -254,4 +259,73 @@ promise.then( ( result ) => {
    }
 */
 ```
+
+## Example get primary typography
+```javascript
+result = await $e.data.get( 'globals/typography?id=primary' );
+console.log( result.data ); 
+
+/*
+{
+         "title": "Primary",
+         "id": "primary",
+         "value": {
+            "typography_typography": "custom",
+            "typography_font_family": "Purple Purse",
+            "typography_font_weight": "600",
+            "typography_font_size": {
+               "unit": "px",
+               "size": "51",
+               "sizes": []
+            },
+            "typography_font_size_tablet": {
+               "unit": "px",
+               "size": "",
+               "sizes": []
+            },
+            "typography_font_size_mobile": {
+               "unit": "px",
+               "size": "",
+               "sizes": []
+            },
+            "typography_text_transform": "",
+            "typography_font_style": "",
+            "typography_text_decoration": "",
+            "typography_line_height": {
+               "unit": "em",
+               "size": "",
+               "sizes": []
+            },
+            "typography_line_height_tablet": {
+               "unit": "em",
+               "size": "",
+               "sizes": []
+            },
+            "typography_line_height_mobile": {
+               "unit": "em",
+               "size": "",
+               "sizes": []
+            },
+            "typography_letter_spacing": {
+               "unit": "px",
+               "size": "",
+               "sizes": []
+            },
+            "typography_letter_spacing_tablet": {
+               "unit": "px",
+               "size": "",
+               "sizes": []
+            },
+            "typography_letter_spacing_mobile": {
+               "unit": "px",
+               "size": "",
+               "sizes": []
+            }
+         }
+      }
+*/
+```
+
 ### [Back](usability.index.md) 
+
+
