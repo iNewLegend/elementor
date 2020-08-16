@@ -1,7 +1,12 @@
 export const tests = () => {
+	// JS API modules.
+	require( './core/common/assets/js/api/modules/command.spec.js' );
 	require( './core/common/assets/js/api/modules/command-base.spec.js' );
+	require( './core/common/assets/js/api/modules/command-callback.spec.js' );
 	require( './core/common/assets/js/api/modules/command-data.spec.js' );
+	require( './core/common/assets/js/api/modules/command-internal.spec.js' );
 
+	// JS API core.
 	require( './core/common/assets/js/api/core/components.spec.js' );
 	require( './core/common/assets/js/api/core/data.spec.js' );
 
@@ -21,7 +26,7 @@ export const tests = () => {
 	require( './assets/dev/js/editor/regions/navigator/component.spec' );
 };
 
-// export for external build.
+// Export for external build.
 if ( $e?.devTools?.external && ! $e.devTools.external.tests ) {
 	$e.devTools.external.tests = tests;
 }
