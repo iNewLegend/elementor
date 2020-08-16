@@ -15,7 +15,7 @@ export default class CommandEditor extends Command {
 	 * @throws {Error}
 	 */
 	requireContainer( args = this.args ) {
-		if ( ! args.container && ! args.containers ) {
+		if ( ! args.container && ! args.containers ) {debugger
 			throw Error( 'container or containers are required.' );
 		}
 
