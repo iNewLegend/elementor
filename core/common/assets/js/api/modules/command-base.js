@@ -36,10 +36,17 @@ export default class CommandBase extends ArgsObject {
 	constructor( args = {}, commandsAPI = $e.commands ) {
 		super( args );
 
-		if ( 0 === $e.commands.constructor.trace.length ) {
+		if ( $e.components.isRegistering ) {
 			this.constructor.registerArgs = args;
 
 			return;
+		}
+
+		if ( 0 === $e.commands.constructor.trace.length ) {
+			if ( ! $e.components.isRegistering ) {
+				// Should be something like doingItWrong().
+				throw RangeError( 'Doing it wrong: $e.components.$e.commands.constructor.trace.length is empty' );
+			}
 		}
 
 		// Acknowledge self about which command it run.
