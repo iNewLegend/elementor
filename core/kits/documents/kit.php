@@ -74,6 +74,8 @@ class Kit extends PageBase {
 	}
 
 	public function save( $data ) {
+		$this->add_handle_revisions_changed();
+
 		$saved = parent::save( $data );
 
 		if ( ! $saved ) {

@@ -1,17 +1,17 @@
 <?php
 namespace Elementor\Core\Base;
 
-use Elementor\Core\Files\CSS\Post as Post_CSS;
-use Elementor\Core\Utils\Exceptions;
-use Elementor\Plugin;
-use Elementor\DB;
 use Elementor\Controls_Manager;
 use Elementor\Controls_Stack;
-use Elementor\User;
+use Elementor\Core\Files\CSS\Post as Post_CSS;
 use Elementor\Core\Settings\Manager as SettingsManager;
+use Elementor\Core\Settings\Page\Manager as PageManager;
+use Elementor\Core\Utils\Exceptions;
+use Elementor\DB;
+use Elementor\Plugin;
+use Elementor\User;
 use Elementor\Utils;
 use Elementor\Widget_Base;
-use Elementor\Core\Settings\Page\Manager as PageManager;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -33,6 +33,7 @@ abstract class Document extends Controls_Stack {
 	 */
 	const TYPE_META_KEY = '_elementor_template_type';
 	const PAGE_META_KEY = '_elementor_page_settings';
+	const CRC32_META_KEY = '_elementor_post_crc32';
 
 	private $main_id;
 
@@ -589,6 +590,8 @@ abstract class Document extends Controls_Stack {
 		do_action( 'elementor/document/after_save', $this, $data );
 
 		$this->set_is_saving( false );
+
+		$this->remove_handle_revisions_changed();
 
 		return true;
 	}
@@ -1283,5 +1286,41 @@ abstract class Document extends Controls_Stack {
 
 	protected function get_have_a_look_url() {
 		return $this->get_permalink();
+	}
+
+	public function handle_revisions_changed( $post_has_changed, $last_revision, $post ) {
+		$post_id = $post->ID;
+		$post_crc32 = '';
+
+		// In case default, didn't determine the changes.
+		if ( ! $post_has_changed ) {
+			$last_revision_id = $last_revision->ID;
+			$last_revision_document = Plugin::instance()->documents->get( $last_revision_id );
+			$last_revision_crc32 = (int) get_post_meta( $last_revision_id, self::CRC32_META_KEY, true );
+
+			if ( ! $last_revision_crc32 ) {
+				$last_revision_crc32 = crc32( serialize( $last_revision_document->get_settings() ) );
+				update_post_meta( $last_revision_id, self::CRC32_META_KEY, $last_revision_crc32 );
+			}
+
+			$post_document = Plugin::instance()->documents->get( $post_id );
+			$post_crc32 = crc32( serialize( $post_document->get_settings() ) );
+
+			$post_has_changed = $post_crc32 !== $last_revision_crc32;
+		}
+
+		if ( $post_has_changed ) {
+			update_post_meta( $post_id, self::CRC32_META_KEY, $post_crc32 );
+		}
+
+		return $post_has_changed;
+	}
+
+	public function add_handle_revisions_changed() {
+		add_filter( 'wp_save_post_revision_post_has_changed', [ $this, 'handle_revisions_changed' ], 10, 3 );
+	}
+
+	public function remove_handle_revisions_changed() {
+		remove_filter( 'wp_save_post_revision_post_has_changed', [ $this, 'handle_revisions_changed' ] );
 	}
 }

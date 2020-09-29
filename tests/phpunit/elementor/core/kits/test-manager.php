@@ -54,9 +54,6 @@ class Test_Manager extends Elementor_Test_Base {
 
 		$kit->update_settings(['custom_colors' => $custom_colors_array]);
 
-		// Make sure that it fetched again from the DB and not from the cache.
-		$kit = Plugin::$instance->documents->get( $kit->get_id(), false );
-
 		$name = get_option( 'blogname' );
 		$description = get_option( 'blogdescription' );
 
@@ -68,6 +65,9 @@ class Test_Manager extends Elementor_Test_Base {
 
 		update_option( 'blogname', $expected_name );
 		update_option( 'blogdescription', $expected_description );
+
+		// Make sure that it fetched again from the DB and not from the cache.
+		$kit = Plugin::$instance->documents->get( $kit->get_id(), false );
 
 		$this->assertEquals( $expected_name, $kit->get_settings( 'site_name' ) );
 		$this->assertEquals( $expected_description, $kit->get_settings( 'site_description' ) );
