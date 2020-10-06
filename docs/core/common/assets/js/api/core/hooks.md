@@ -24,14 +24,9 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
 	| `$e.hooks.runUICatch()`              | `{String}` *command*, `{Object}` *args*, `{*}` *result*                                         | `{Boolean}`           | Run UI hook that's run when the command fails.
 	| `$e.hooks.runUIBefore()`             | `{String}` *command*, `{Object}` *args*, `{*}` *result*                                         | `{Boolean}`           | Run UI hook that's run before the command.
 
-
-
-
-### > **Note:** further information about how to use hooks, can be found at [`{$e.hooks.ui}`](hooks/ui.md) and [`{$e.hooks.data}`](hooks/data.md) accoridng to their type.
-
 ## Guidelines, conventions & file's structure 
-  * Each hook, owned by a component.
-  * Each component, can extend `defaultHooks` method which are used to import the hooks.
+  * Each hook, owned by a [component](../core/components.md#guidelines-conventions--files-structure).
+  * Each [component](../core/components.md#guidelines-conventions--files-structure), can extend `defaultHooks` method which are used to import the hooks.
   * The hooks imported via built-in method called `importHooks`.
     * All the hooks should be exported in one index file:
         ```javascript
@@ -75,7 +70,6 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
         29 │   │   📜 index.js ( has all data hooks exported )
         30 │   │   ...
         ```
-        `index.js` file at line *5*:
         `index.js` file at line *5*:
         ```javascript
         export * from './ui/';
@@ -146,7 +140,7 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
     |`{COMMAND}`             | which command to hook               | `document/elements/settings`
     |`{FILE_NAME}`           | kebab case, name is description oh what the hook does | `footer-saver-refresh-menu.js`
     |`{FILE_NAME_CAMEL_CASE}`| camel case, of `{FILE_NAME}`        | `FooterSaverRefreshMenu`
-    |`{FILE_NAME_WITHOUT_JS}`| `{FILE_NAME}` without js            | `footer-saver-refresh-menu`
+    |`{FILE_NAME_WITHOUT_JS}`| `{FILE_NAME}` without `.js`         | `footer-saver-refresh-menu`
     |`{FILE_PATH}`           | `{TYPE}/{COMMAND}/{FILE_NAME}`      | `ui/document/elements/settings/footer-saver-refresh-menu.js`
     |`{CONTAINER_TYPE}`      | optional, gain performance if container type is known in advance | `document`
     > Example
@@ -182,5 +176,7 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
     29
     30 export default FooterSaverRefreshMenu; // Required - comment should be deleted.
 
+
+> ###  **Note:** further information about how to use hooks, can be found at [`{$e.hooks.ui}`](hooks/ui.md) and [`{$e.hooks.data}`](hooks/data.md) accoridng to their type.
 
 ### [Back](../readme.md) 
