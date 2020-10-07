@@ -61,7 +61,7 @@ The components are extensible so a 3rd party plugin can add some routes, command
     
     ```
 ## Guidelines, conventions & file's structure
-  * You can view your component as namespace, that holds your [commands](../core/commands.md), [hooks](../core/hooks.md), [routes](#UPDATE_WHEN_READY), [tabs](#UPDATE_WHEN_READY), [shortcuts](#UPDATE_WHEN_READY) & [utils](#UPDATE_WHEN_READY).
+  * You can view your component as namespace, that holds your [commands](../core/commands.md#guidelines-conventions--files-structure), [hooks](../core/hooks.md#guidelines-conventions--files-structure), [routes](#UPDATE_WHEN_READY), [tabs](#UPDATE_WHEN_READY), [shortcuts](#UPDATE_WHEN_READY) & [utils](#UPDATE_WHEN_READY).
   * Component class file should be named `component.js`
   * Component folder name should be named as component namespace or sub component namespace.
   * Components and sub-components convention example, described in next scenario:
