@@ -110,7 +110,7 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
     7  	}
     8  
     9  	getId() {
-    10		return '{COMMAND}--{FILE_NAME_WITHOUT_JS}';
+    10		return '{FILE_NAME_WITHOUT_JS}--{COMMAND}';
     11	}
     12
     13	getContainerType() {
@@ -154,7 +154,7 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
     7  	}
     8
     9  	getId() {
-    10		return 'document/elements/settings--footer-save-refresh-menu';
+    10		return 'footer-save-refresh-menu--document/elements/settings';
     11	}
     12
     13	getContainerType() {
