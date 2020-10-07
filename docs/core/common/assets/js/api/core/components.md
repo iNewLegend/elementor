@@ -60,5 +60,57 @@ The components are extensible so a 3rd party plugin can add some routes, command
      console.log( 'e-components-eg-1-result: ', result );
     
     ```
-  
+## Guidelines, conventions & file's structure
+  * You can view your component as namespace, that holds your [commands](../core/commands.md), [hooks](../core/hooks.md), [routes](#UPDATE_WHEN_READY), [tabs](#UPDATE_WHEN_READY), [shortcuts](#UPDATE_WHEN_READY) & [utils](#UPDATE_WHEN_READY).
+  * Component class file should be named `component.js`
+  * Component folder name should be named as component namespace or sub component namespace.
+  * Components and sub-components convention example, described in next scenario:
+  Assuming you create a `Document` component which creates a sub-component `Elements`
+    ```html class:"lineNo"
+    1  📦 document
+    2  │   📜 component.js
+    3  │   📜 index.js           ( has all sub-components exported )
+    4  │
+    5  └───📂 elements
+    6  │   │   📜 component.js
+    7  │   │   |   ...
+    ```
+    
+    `index.js` file at line *3*:
+    ```javascript
+    export { default as ElementsComponent } from './elements/component.js';
+    ```    
+    `component.js` file at line *2*:
+    ```javascript
+    import * as components from './';
+    
+    export default class Component extends $e.modules.ComponentBase {
+        getNamespace() {
+            return 'document';
+        }
+        
+        registerAPI() {
+            // Register sub components.
+            Object.values( components ).forEach( ( ComponentClass ) =>
+                $e.components.register( new ComponentClass )
+            );
+        
+            super.registerAPI();
+        }
+    }
+    
+    export default class Component;
+    ```
+    
+    `component.js` file at line *6*:
+    ```javascript
+    export default class Component extends $e.modules.ComponentBase {
+        getNamespace() {
+            return 'elements';
+        }
+    }
+    
+    export default class Component;
+    ```
+
 ### [Back](../readme.md) 
