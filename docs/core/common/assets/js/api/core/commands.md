@@ -71,6 +71,104 @@ The full list of commands, including custom & 3rd commands, is available via: `$
      // Output command run result.
      console.log( 'e-commands-eg-1-result: ', result );
     ```
-> **Note:** further information about [`{$e.modules.CommandBase}`](../modules/command-base.full.md)**class**.
+## Guidelines, conventions & file's structure
+  * Each command, owned by a [component](../core/components.md#guidelines-conventions--files-structure).
+  * Currently, there are _3_ main *base/types*: 
+    * Commands - Base class: `$e.modules.CommandBase` - `[USER]` commands that represent user actions.
+    * Commands internal - Base class:  `$e.modules.CommandInternalBase` - `[INTERNAL]` for internal usage.
+    * Commands data - Base class: `$e.modules.CommandData` - `[DATA]` commands for communicate with the _data\cache\backend_.
+  * Each [component](../core/components.md#guidelines-conventions--files-structure), can extend few methods `defaultCommands`, `defaultCommandsInternal`, `defaultData` 
+  methods which are used to import the command(s), according to their type.
+  * The commands imported via built-in method called `importCommands`.
+    * Example:
+        ```html class:"lineNo"
+        1  📦 component
+        2  │   📜 component.js
+        3  │
+        4  └───📂 commands
+        5  │   │   📜 index.js ( has all the commands exported )
+        6  │   │   📜 exmaple-command.js
+        7  │   │   ...
+        ```
+        `index.js` file at line *5*:
+        ```javascript
+        export { ExmapleCommand } from './example-command';
+        ```
+    * use `importCommands` example: `component.js` file at line *2*:
+        ```javascript
+        import * as commands from './commands/';
+
+        export class Component extends $e.modules.ComponentBase {
+            getNamespace() {
+                return 'component-name';
+            }
+
+            defaultCommands() {
+                return this.importCommands( commands );
+            }
+        }
+        ```
+  * All series of commands type should have unique folder and index file to hold them:
+    * Commands:
+        * As the example above.
+    * Commands internal
+        * Example:
+            ```html class:"lineNo"
+            1  📦 component
+            2  │   📜 component.js
+            3  │
+            4  └───📂 commands-internal
+            5  │   │   📜 index.js ( has all the commands exported )
+            6  │   │   📜 internal-command.js
+            7  │   │   ...
+            ```
+        * `index.js` file at line *5*:
+            ```javascript
+            export { InternalCommand } from './internal-command';
+            ```
+        * use `importCommands` example: `component.js` file at line *2*:
+            ```javascript
+            import * as commandsInternal from './commands-internal/';
+    
+            export class Component extends $e.modules.ComponentBase {
+                getNamespace() {
+                    return 'component-name';
+                }
+    
+                defaultCommandsInternal() {
+                    return this.importCommands( commandsInternal );
+                }
+            }
+            ```
+    * Commands data
+        * Example:
+            ```html class:"lineNo"
+            1  📦 component
+            2  │   📜 component.js
+            3  │
+            4  └───📂 commands-data
+            5  │   │   📜 index.js ( has all the commands exported )
+            6  │   │   📜 data-command.js
+            7  │   │   ...
+            ```
+        * `index.js` file at line *5*:
+            ```javascript
+            export { DataCommand } from './data-command';
+            ```
+        * use `importCommands` example: `component.js` file at line *2*:
+            ```javascript
+            import * as commandsData from './commands-data/';
+    
+            export class Component extends $e.modules.ComponentBase {
+                getNamespace() {
+                    return 'component-name';
+                }
+    
+                defaultData() {
+                    return this.importCommands( commandsData );
+                }
+            }
+            ```
+> ### **Note:** further information about [`{$e.modules.CommandBase}`](../modules/command-base.full.md)**class**.
 
 ### [Back](../readme.md) 
