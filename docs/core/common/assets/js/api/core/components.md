@@ -76,11 +76,11 @@ The components are extensible so a 3rd party plugin can add some routes, command
     7  │   │   |   ...
     ```
     
-    `index.js` file at line *3*:
+    `document/index.js` file at line *3*:
     ```javascript
     export { default as ElementsComponent } from './elements/component.js';
     ```    
-    `component.js` file at line *2*:
+    `document/component.js` file at line *2*:
     ```javascript
     import * as components from './';
     
@@ -102,7 +102,7 @@ The components are extensible so a 3rd party plugin can add some routes, command
     export default class Component;
     ```
     
-    `component.js` file at line *6*:
+    `document/elements/component.js` file at line *6*:
     ```javascript
     export default class Component extends $e.modules.ComponentBase {
         getNamespace() {

@@ -70,22 +70,22 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
         29 │   │   📜 index.js ( has all data hooks exported )
         30 │   │   ...
         ```
-        `index.js` file at line *5*:
+        `component/hooks/index.js` file at line *5*:
         ```javascript
         export * from './ui/';
         export * from './data/';
         ```
-        `index.js` file at line *17*:
+        `component/hooks/ui/index.js` file at line *17*:
         ```javascript
         export { FooterSeverRefreshMenu } from './document/elements/settings/footer-saver-refresh-menu';
         export { UpdateButton } from './document/save/set-is-modifed/update-button';
         ```      
-        `index.js` file at line *29*:
+        `component/hooks/data/index.js` file at line *29*:
         ```javascript
         export { BypassImport } from './document/elements/import/bypass-import';
         export { SaveExtras } from './document/save/save/save-extras';
         ```
-    * use `importHooks` example: `component.js` file at line *2*:
+    * use `importHooks` example: `component/component.js` file at line *2*:
         ```javascript
         import * as hooks from './hooks/';
 
@@ -175,8 +175,8 @@ the hooks attached to $e.commands and each hook fired _after/before_ running a c
     28 }
     29
     30 export default FooterSaverRefreshMenu; // Required - comment should be deleted.
+    ```
 
-
-> ###  **Note:** further information about how to use hooks, can be found at [`{$e.hooks.ui}`](hooks/ui.md) and [`{$e.hooks.data}`](hooks/data.md) accoridng to their type.
+###  **Note:** further information about how to use hooks, can be found at [`{$e.hooks.ui}`](hooks/ui.md) and [`{$e.hooks.data}`](hooks/data.md) accoridng to their type.
 
 ### [Back](../readme.md) 

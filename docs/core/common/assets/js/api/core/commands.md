@@ -72,14 +72,14 @@ The full list of commands, including custom & 3rd commands, is available via: `$
      console.log( 'e-commands-eg-1-result: ', result );
     ```
 ## Guidelines, conventions & file's structure
-  * Each command, owned by a [component](../core/components.md#guidelines-conventions--files-structure).
+  * Each command, should be owned by a [component](../core/components.md#guidelines-conventions--files-structure).
   * Currently, there are _3_ main *base/types*: 
     * Commands - Base class: `$e.modules.CommandBase` - `[USER]` commands that represent user actions.
     * Commands internal - Base class:  `$e.modules.CommandInternalBase` - `[INTERNAL]` for internal usage.
     * Commands data - Base class: `$e.modules.CommandData` - `[DATA]` commands for communicate with the _data\cache\backend_.
-  * Each [component](../core/components.md#guidelines-conventions--files-structure), can extend few methods `defaultCommands`, `defaultCommandsInternal`, `defaultData` 
+  * Each [component](../core/components.md#guidelines-conventions--files-structure), can override few methods `defaultCommands`, `defaultCommandsInternal`, `defaultData` 
   methods which are used to import the command(s), according to their type.
-  * The commands imported via built-in method called `importCommands`.
+  * The commands should be imported via built-in method called `importCommands`.
     * Example:
         ```html class:"lineNo"
         1  📦 component
@@ -90,11 +90,11 @@ The full list of commands, including custom & 3rd commands, is available via: `$
         6  │   │   📜 exmaple-command.js
         7  │   │   ...
         ```
-        `index.js` file at line *5*:
+        `component/commands/index.js` file at line *5*:
         ```javascript
         export { ExmapleCommand } from './example-command';
         ```
-    * use `importCommands` example: `component.js` file at line *2*:
+    * use `importCommands` example: `component/component.js` file at line *2*:
         ```javascript
         import * as commands from './commands/';
 
@@ -122,11 +122,11 @@ The full list of commands, including custom & 3rd commands, is available via: `$
             6  │   │   📜 internal-command.js
             7  │   │   ...
             ```
-        * `index.js` file at line *5*:
+        * `component/commands-internal/index.js` file at line *5*:
             ```javascript
             export { InternalCommand } from './internal-command';
             ```
-        * use `importCommands` example: `component.js` file at line *2*:
+        * use `importCommands` example: `component/component.js` file at line *2*:
             ```javascript
             import * as commandsInternal from './commands-internal/';
     
@@ -151,11 +151,11 @@ The full list of commands, including custom & 3rd commands, is available via: `$
             6  │   │   📜 data-command.js
             7  │   │   ...
             ```
-        * `index.js` file at line *5*:
+        * `component/commands-data/index.js` file at line *5*:
             ```javascript
             export { DataCommand } from './data-command';
             ```
-        * use `importCommands` example: `component.js` file at line *2*:
+        * use `importCommands` example: `component/component.js` file at line *2*:
             ```javascript
             import * as commandsData from './commands-data/';
     
@@ -169,6 +169,6 @@ The full list of commands, including custom & 3rd commands, is available via: `$
                 }
             }
             ```
-> ### **Note:** further information about [`{$e.modules.CommandBase}`](../modules/command-base.full.md)**class**.
+### **Note:** further information about [`{$e.modules.CommandBase}`](../modules/command-base.full.md)**class**.
 
 ### [Back](../readme.md) 
