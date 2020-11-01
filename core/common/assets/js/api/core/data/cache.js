@@ -73,6 +73,19 @@ export default class Cache {
 				return accumulator[ pureEndpointPart ];
 			}, newData );
 
+			// TODO: Test.
+			// TODO: Test that ensure only first level depth get reordered.
+			// If data is array and content include id, reorder data as object with id as key.
+			if ( Array.isArray( data ) && data[ 0 ]?.id ) {
+				const newObject = {};
+
+				data.forEach( ( value ) => {
+					newObject[ value.id ] = value;
+				} );
+
+				data = newObject;
+			}
+
 			// 'result' is equal to 'newData' with a deeper pointer, build based on 'pureEndpointParts' ( will effect newData ).
 			Object.assign( result, data );
 		} else {
@@ -199,18 +212,22 @@ export default class Cache {
 			}
 
 			const pureEndpoint = requestData.endpoint.replace( componentName + '/', '' ),
-				pureEndpointParts = pureEndpoint.split( '/' ),
-				lastEndpointPart = pureEndpointParts[ pureEndpointParts.length - 1 ];
+				pureEndpointParts = pureEndpoint.split( '/' );
 
-				pureEndpointParts.reduce( ( accumulator, pureEndpointPart ) => {
-					if ( pureEndpointPart === lastEndpointPart ) {
-						// Null, means delete.
-						accumulator[ pureEndpointPart ] = null;
-					} else {
-						accumulator[ pureEndpointPart ] = {};
-					}
-					return accumulator[ pureEndpointPart ];
-				}, newData );
+			let count = 0;
+
+			pureEndpointParts.reduce( ( accumulator, pureEndpointPart ) => {
+				// If last part.
+				if ( count === pureEndpointParts.length - 1 ) {
+					// Null, means delete.
+					accumulator[ pureEndpointPart ] = null;
+				} else {
+					accumulator[ pureEndpointPart ] = {};
+				}
+
+				count++;
+				return accumulator[ pureEndpointPart ];
+			}, newData );
 
 			if ( Object.keys( oldData ).length ) {
 				const deleteKeys = ( target, nullsObject ) => {

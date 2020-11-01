@@ -1,14 +1,49 @@
 import ComponentBase from 'elementor-api/modules/component-base';
 import * as commands from './commands/';
+import * as commandsInternal from './commands/internal/';
 import * as hooks from './hooks/';
+import * as commandsRevisions from './data/editor/documents/';
 
-export default class Component extends ComponentBase {
+export default class RevisionsComponent extends ComponentBase {
+	/**
+	 * @type {Document}
+	 */
+	currentDocument;
+
+	/**
+	 * @type {RevisionsTabView}
+	 */
+	tab;
+
+	currentPreviewId = null;
+
+	currentPreviewItem = null;
+
+	isRevisionApplied = false;
+
+	collection;
+
 	getNamespace() {
 		return 'panel/history/revisions';
 	}
 
+	registerAPI() {
+		super.registerAPI();
+
+		const documentsComponent = $e.components.get( 'editor/documents' ),
+			revisionsCommands = documentsComponent.importCommands( commandsRevisions );
+
+		Object.entries( revisionsCommands ).forEach( ( [ command, callback ] ) => {
+			documentsComponent.registerData( command, callback );
+		} );
+	}
+
 	defaultCommands() {
 		return this.importCommands( commands );
+	}
+
+	defaultCommandsInternal() {
+		return this.importCommands( commandsInternal );
 	}
 
 	defaultHooks() {
