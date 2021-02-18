@@ -19,7 +19,7 @@ to  `$e.commands`  and each  **hook** being fired after/before/catch a command, 
    * Register data hook that runs **_after_** command runs:
         ```javascript
         // Example of data hook, fired after the command runs.
-        // Important: Available to run in the console but depends on $e.components example#1. ( TODO ADD LINK )
+        // Important: Available to run in the console but depends on $e.components example#1.
         class CustomDataHook extends $e.modules.hookData.After {
             getCommand() {
                 // Command to hook.
@@ -34,7 +34,7 @@ to  `$e.commands`  and each  **hook** being fired after/before/catch a command, 
             // Recommended function, used for optimization, if the container type is known in advance,
             // you can pass it here.
             //
-            // bindContainerType() {
+            // getContainerType() {
             // If `args.container.type` is always the same for the hook return it:
             // return 'container_type';
             // }
@@ -61,7 +61,7 @@ to  `$e.commands`  and each  **hook** being fired after/before/catch a command, 
         // Output all data hooks after.
         console.log( $e.hooks.data.getAll().after );
         
-        // Test the hook
+        // Test the hook.
         result = $e.run( 'custom-component/example', {
             property: 'value', // The conditions for the hook to be run.
         } );
@@ -83,7 +83,7 @@ to  `$e.commands`  and each  **hook** being fired after/before/catch a command, 
 		      return 'section-columns-limit';
 		   }
 
-		   bindContainerType() {
+		   getContainerType() {
 		      return 'section';
 		   }
 

@@ -21,7 +21,7 @@ Mainly used for UI/View manipulation.
 
         ```javascript
         // Example of UI hook, fired after the command runs and change ( CSS Class ) of all div elements.
-        // Important: Available to run in the console but depends on $e.components example#1. ( TODO ADD LINK )
+        // Important: Available to run in the console but depends on $e.components example#1.
         
         class CustomUIHook extends $e.modules.hookUI.After {
            getCommand() {
