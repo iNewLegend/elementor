@@ -3,15 +3,27 @@ import tests from '../tests';
 /* global require */
 
 export default class EditorBootstrap {
+	static consoleErrorsOrig;
+
+	static catchConsoleErrors() {
+		console.error = ( ... args ) => {
+			throw new Error( args );
+		};
+	}
+
+	static freeConsoleErrors() {
+		console.error = EditorBootstrap.catchConsoleErrors;
+	}
+
 	constructor() {
+		EditorBootstrap.consoleErrorsOrig = console.error;
+
 		jQuery( this.initialize.bind( this ) );
 	}
 
 	initialize() {
 		// Since JS API catch errors that occurs while running commands, the tests should expect it.
-		console.error = ( ... args ) => {
-			throw new Error( args );
-		};
+		EditorBootstrap.catchConsoleErrors();
 
 		const EditorTest = require( './test' ).default,
 			ajax = require( '../mock/ajax' ),

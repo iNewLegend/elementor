@@ -309,14 +309,7 @@ export default class Commands extends CommandsBackwardsCompatibility {
 
 		// TODO: Check with mati.
 		if ( ! this.validateInstanceScope( instance, command, currentComponent ) ) {
-			// TODO: Code duplication, handle after review with mati.
-			const container = currentComponent.getRootContainer();
-
-			this.currentTrace.pop();
-			Commands.trace.pop();
-
-			delete this.current[ container ];
-			delete this.currentArgs[ container ];
+			this.clearTrace( currentComponent.getRootContainer() );
 
 			return;
 		}
@@ -336,10 +329,11 @@ export default class Commands extends CommandsBackwardsCompatibility {
 
 			results = instance.run();
 		} catch ( e ) {
+			this.clearTrace( this.getComponent( command ).getRootContainer() );
+
 			instance.onCatchApply( e );
 
 			if ( e instanceof $e.modules.HookBreak ) {
-				this.afterRun( command, args, e ); // To clear current.
 				return false;
 			}
 		}
@@ -374,21 +368,21 @@ export default class Commands extends CommandsBackwardsCompatibility {
 			},
 			handleResultJQueryDeferred = ( _result ) => {
 				_result.fail( ( e ) => {
+					this.clearTrace( this.getComponent( command ).getRootContainer() );
 					instance.onCatchApply( e );
-					this.afterRun( command, instance.args, e );
 				} );
 				_result.done( onAfter );
 
 				return _result;
 			},
-			handleResultPromise = ( _result ) => {
+			handleResultPromise = () => {
 				// Override initial result ( promise ) to await onAfter promises, first!.
 				return ( async () => {
 					await result.catch( ( e ) => {
+						this.clearTrace( this.getComponent( command ).getRootContainer() );
 						instance.onCatchApply( e );
-						this.afterRun( command, instance.args, e );
 					} );
-					await result.then( ( __result ) => asyncOnAfter( __result ) );
+					await result.then( ( _result ) => asyncOnAfter( _result ) );
 
 					return result;
 				} )();
@@ -442,11 +436,7 @@ export default class Commands extends CommandsBackwardsCompatibility {
 
 		this.trigger( 'run:after', component, command, args, results );
 
-		this.currentTrace.pop();
-		Commands.trace.pop();
-
-		delete this.current[ container ];
-		delete this.currentArgs[ container ];
+		this.clearTrace( container );
 	}
 
 	validateInstanceScope( instance, command, currentComponent ) {
@@ -464,6 +454,14 @@ export default class Commands extends CommandsBackwardsCompatibility {
 		}
 
 		return true;
+	}
+
+	clearTrace( container ) {
+		this.currentTrace.pop();
+		Commands.trace.pop();
+
+		delete this.current[ container ];
+		delete this.currentArgs[ container ];
 	}
 
 	/**

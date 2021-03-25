@@ -6,6 +6,7 @@ import CommandData from 'elementor-api/modules/command-data';
 import CommandHistoryDebounce from 'elementor-document/base/command-history-debounce';
 import CommandEditor from 'elementor-editor/base/command-editor';
 import CommandEditorInternal from 'elementor-editor/base/command-editor-internal';
+import EditorBootstrap from 'elementor/tests/qunit/editor/bootstrap';
 
 jQuery( () => {
 	QUnit.module( 'File: editor/document/base/command-history.js', () => {
@@ -26,6 +27,8 @@ jQuery( () => {
 			} );
 
 			QUnit.test( 'onCatchApply()`', ( assert ) => {
+				EditorBootstrap.freeConsoleErrors();
+
 				const fakeHistory = class extends CommandHistory {
 						// eslint-disable-next-line no-unused-vars
 						getHistory( args ) {
@@ -55,6 +58,8 @@ jQuery( () => {
 
 				assert.equal( tempCommand, 'document/history/delete-log' );
 				assert.equal( tempArgs.id, instance.historyId );
+
+				EditorBootstrap.catchConsoleErrors();
 			} );
 
 			QUnit.test( 'instanceOf(): validation', ( assert ) => {
