@@ -156,4 +156,36 @@ class Documents extends WP_UnitTest_Factory_For_Thing {
 
 		return $this->update_object( $document->get_id(), [ 'post_status' => 'publish' ] );
 	}
+
+	public function publish_with_duplicated_widget() {
+		$document = $this->create_and_get();
+		$elementor_data = $document->get_json_meta( '_elementor_data' );
+
+		$section = &$elementor_data[ 0 ];
+		$column = &$section['elements'][ 0 ];
+		$widget = &$column['elements'][ 0 ];
+
+		// Duplicate widget.
+		$column['elements'][] = $widget;
+
+		// Find better way.
+		$document->save( [
+			'settings' => [
+				'post_status' => 'publish'
+			],
+			'elements' => $elementor_data,
+		] );
+
+		return $document;
+	}
+
+	public function create_and_get_template( $template_type, $args = [] ) {
+		return $this->create_and_get( array_merge( [
+			'post_type' => 'post', // TODO: Should be 'elementor_library' but 'elementor_library' is not registered type.
+			'meta_input' => [
+				'_elementor_template_type' => $template_type,
+			],
+		], $args ));
+	}
+
 }
