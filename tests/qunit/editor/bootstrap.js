@@ -54,10 +54,8 @@ export default class EditorBootstrap {
 		}
 
 		$e.tests.commands = {
-			exceptCatchApply: ( callback, count = 1 ) => {
-				for ( let i = 0; i < count; ++i ) {
-					exceptCatchApply.push( ( e, instance ) => callback( e, instance ) );
-				}
+			exceptCatchApply: ( callback ) => {
+				exceptCatchApply.push( ( e, instance ) => callback( e, instance ) );
 			},
 		};
 

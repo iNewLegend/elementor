@@ -81,16 +81,11 @@ export const Draft = () => {
 				post_status: 'private',
 			} );
 
-			/**
-			 * TODO: Currently the commands mechanism not works as except trigger two catch applies.
-			 * one for `document/save/auto'.
-			 * and another which passed to 'document/save/draft'.
-			 */
-			assert.expect( 2 );
+			assert.expect( 1 );
 
 			$e.tests.commands.exceptCatchApply( ( e ) => {
 				assert.equal( e, 'Document is not editable' );
-			}, 2 );
+			} );
 
 			// Put back as it was before.
 			$e.run( 'document/save/draft', { document } ).always( () => {

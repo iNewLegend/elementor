@@ -19,6 +19,8 @@ export default class Commands extends CommandsBackwardsCompatibility {
 		this.currentTrace = [];
 		this.commands = {};
 		this.components = {};
+
+		this.failedResults = [];
 	}
 
 	/**
@@ -373,9 +375,32 @@ export default class Commands extends CommandsBackwardsCompatibility {
 				this.afterRun( command, instance.args, _result );
 			},
 			handleResultJQueryDeferred = ( _result ) => {
+				/**
+				 * handleResultJQueryDeferred will be called for each command in trace,
+				 * scenario: calling to 'document/save/draft' will call also to:
+				 * 'document/save/auto' and then it will return same promise for both commands.
+				 * but the 'same promise for both commands' is not the issue or the solution.
+				 * even if both commands return a new promise, they both will pass this mechanism (running a command mechanism),
+				 * In other words it means, that binding of callback in `_result.fail` will be called twice.
+				 * And it will not break, on the first 'Catch' as may assumed, so there is the solution,
+				 * using saving `failedResults`. Passing the same promise twice mean its enough to merge them,
+				 */
 				_result.fail( ( e ) => {
+					if ( this.failedResults.length ) {
+						this.afterRun( command, instance.args, e );
+
+						return _result;
+					}
+
 					this.catchApply( e, instance );
+
 					this.afterRun( command, instance.args, e );
+
+					this.failedResults.push( _result );
+
+					setTimeout( () => {
+						this.failedResults.pop();
+					} );
 				} );
 				_result.done( onAfter );
 
